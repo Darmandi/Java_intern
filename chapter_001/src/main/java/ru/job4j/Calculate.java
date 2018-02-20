@@ -12,7 +12,7 @@ public class Calculate {
 	 * @param args - args.
 	 */
 	public static void main(String[] args) {
-		System.out.println("Hello world");   
+		System.out.println("Hello world");
 	}
 	/**
 	 * Method echo.
@@ -21,5 +21,5 @@ public class Calculate {
 	 */
 	public String echo(String name) {
 		return "Echo, echo, echo : " + name;
-    }
+	}
 }

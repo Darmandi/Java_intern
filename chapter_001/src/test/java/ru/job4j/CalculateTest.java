@@ -17,11 +17,11 @@ public class CalculateTest {
 	 * Test echo.
 	 */ @Test
 	public void whenTakeNameThenTreeEchoPlusName() {
-	    String input = "Dmitrii Saraev";
-	    String expect = "Echo, echo, echo : Dmitrii Saraev"; 
-	    Calculate calc = new Calculate();
-	    String result = calc.echo(input);
-	    assertThat(result, is(expect));
+		String input = "Dmitrii Saraev";
+		String expect = "Echo, echo, echo : Dmitrii Saraev";
+		Calculate calc = new Calculate();
+		String result = calc.echo(input);
+		assertThat(result, is(expect));
 	}
- 
+
 }
