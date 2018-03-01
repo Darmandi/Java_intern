@@ -6,6 +6,9 @@ package ru.job4j.calculator;
 public class Fit {
 	
 	private double weight;
+    private final int Hundred = 100;
+    private final int HundredTen = 110;
+    private final double OnePointFifteen = 1.15;
 
     /**
      * Идеальный вес для мужщины.
@@ -13,7 +16,7 @@ public class Fit {
      * @return идеальный вес.
      */
     double manWeight(double height) {
-		this.weight = (height-100)*1.15;
+		this.weight = (height-Hundred)*OnePointFifteen;
         return this.weight;
     }
 
@@ -23,7 +26,7 @@ public class Fit {
      * @return идеальный вес.
      */
     double womanWeight(double height) {
-		this.weight = (height-110)*1.15;
+		this.weight = (height-HundredTen)*OnePointFifteen;
         return this.weight;
     }
 }
