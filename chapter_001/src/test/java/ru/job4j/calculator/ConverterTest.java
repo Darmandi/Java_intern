@@ -5,19 +5,19 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class ConverterTest {
-    private int rubineu = 70;
-    private int rubinusd = 60;
+    private final int Rubineu = 70;
+    private final int Rubinusd = 60;
     @Test
     public void when60RubleToDollarThen1() {
         Converter converter = new Converter();
-        int result = converter.rubleToDollar(rubinusd);
+        int result = converter.rubleToDollar(Rubinusd);
         assertThat(result, is(1));
     }
 
     @Test
     public void when70RubleToEuroThen1() {
         Converter converter = new Converter();
-        int result = converter.rubleToEuro(rubineu);
+        int result = converter.rubleToEuro(Rubineu);
         assertThat(result, is(1));
     }
 
@@ -25,13 +25,13 @@ public class ConverterTest {
     public void when1DollarTo60Ruble() {
         Converter converter = new Converter();
         int result = converter.dollarToRuble(1);
-        assertThat(result, is(rubinusd));
+        assertThat(result, is(Rubinusd));
     }
 
     @Test
     public void when1EuroTo70Ruble() {
         Converter converter = new Converter();
         int result = converter.euroToRuble(1);
-        assertThat(result, is(rubineu));
+        assertThat(result, is(Rubineu));
     }
 }
