@@ -15,4 +15,9 @@ public class MaxTest {
         Max number = new Max();
         assertThat(number.max(3, 5), is(5));
     }
+    @Test
+    public void whenThirdHigher() {
+        Max number = new Max();
+        assertThat(number.max(3, 5, 7), is(7));
+    }
 }
