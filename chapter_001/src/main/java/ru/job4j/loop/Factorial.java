@@ -15,8 +15,6 @@ public class Factorial {
     public int factorial (int number) {
         int temp = 1;
         for (int i = 1; i<=number; i++){
-            if (number < 0)
-                break;
             if (number == 0)
                 return temp;
             temp = temp*i;
