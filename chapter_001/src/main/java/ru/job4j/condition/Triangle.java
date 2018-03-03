@@ -40,7 +40,6 @@ public class Triangle {
      * Метод проверяет можно ли построить треугольник с такими длинами сторон.
      */
     private boolean exist(double ab, double ac, double bc) {
-        boolean existance = (ab + ac > bc && ab + bc > ac && ac + bc >ab) ? true : false;
-        return existance;
+        return (ab + ac > bc && ab + bc > ac && ac + bc >ab) ? true : false;
     }
 }
