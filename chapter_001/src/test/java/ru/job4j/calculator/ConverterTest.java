@@ -5,8 +5,8 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class ConverterTest {
-    private final int RUBINEU = 70;
-    private final int RUBINUSD = 60;
+    static final int RUBINEU = 70;
+    static final int RUBINUSD = 60;
     @Test
     public void when60RubleToDollarThen1() {
         Converter converter = new Converter();

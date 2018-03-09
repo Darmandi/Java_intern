@@ -11,7 +11,7 @@ public class FactorialTest {
         assertThat(five.factorial(5), is(120));
     }
     @Test
-    public void factorialZeroTest () {
+    public void factorialZeroTest() {
         Factorial zero = new Factorial();
         assertThat(zero.factorial(0), is(1));
     }

@@ -12,11 +12,11 @@ public class Factorial {
      * @param number заданное число
      * @return факториал
      */
-    public int factorial (int number) {
+    public int factorial(int number) {
         int temp = 1;
 
-        for (int i = 1; i<=number; i++){
-            temp = temp*i;
+        for (int i = 1; i <= number; i++) {
+            temp = temp * i;
         }
         return temp;
     }

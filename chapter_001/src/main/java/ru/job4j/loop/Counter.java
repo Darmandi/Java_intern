@@ -14,9 +14,10 @@ public class Counter {
      */
     public int sumOfEven(int begin, int end) {
         int temp = 0;
-        for (int i = begin; i<= end; i++) {
-            if (i % 2 == 0)
+        for (int i = begin; i <= end; i++) {
+            if (i % 2 == 0) {
                 temp = temp + i;
+            }
         }
         return temp;
     }

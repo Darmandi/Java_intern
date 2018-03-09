@@ -18,7 +18,7 @@ public class Triangle {
 
 
     public double period(double ab, double ac, double bc) {
-        return (ab + ac + bc)/2;
+        return (ab + ac + bc) / 2;
     }
 
     /**
@@ -26,13 +26,14 @@ public class Triangle {
      * @return Вернуть прощадь, если треугольник существует или -1, если треугольника нет.
      */
     public double area() {
-        double rsl =-1;
+        double rsl = -1;
         double ab = this.a.distance(this.b);
         double ac = this.a.distance(this.c);
         double bc = this.b.distance(this.c);
         double p = this.period(ab, ac, bc);
-        if (this.exist(ab, ac, bc))
-            rsl = Math.sqrt(p*(p - ab)*(p - ac)*(p - bc));
+        if (this.exist(ab, ac, bc)) {
+            rsl = Math.sqrt(p * (p - ab) * (p - ac) * (p - bc));
+        }
         return rsl;
     }
 
@@ -40,6 +41,6 @@ public class Triangle {
      * Метод проверяет можно ли построить треугольник с такими длинами сторон.
      */
     private boolean exist(double ab, double ac, double bc) {
-        return (ab + ac > bc && ab + bc > ac && ac + bc >ab) ? true : false;
+        return (ab + ac > bc && ab + bc > ac && ac + bc > ab) ? true : false;
     }
 }
