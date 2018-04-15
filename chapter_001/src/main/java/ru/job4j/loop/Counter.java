@@ -11,6 +11,7 @@ public class Counter {
      * Вычисляет сумму четных чисел в заданном диапазое
      * @param begin начало диапазона
      * @param end конец диапазона
+     * @return сумма
      */
     public int sumOfEven(int begin, int end) {
         int temp = 0;
