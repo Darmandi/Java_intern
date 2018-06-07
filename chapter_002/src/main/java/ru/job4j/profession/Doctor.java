@@ -11,8 +11,7 @@ public class Doctor extends Profession {
     }
 
     public Doctor(String name, String profession) {
-        this.name = name;
-        this.profession = profession;
+        super(name, profession);
     }
      /**
      * Лечит кашель у пациента

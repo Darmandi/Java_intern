@@ -9,8 +9,7 @@ public class Teacher extends Profession {
     }
 
     public Teacher(String name, String profession) {
-        this.name = name;
-        this.profession = profession;
+        super(name, profession);
     }
     /**
      * Учит студента

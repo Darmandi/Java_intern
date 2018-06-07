@@ -11,8 +11,7 @@ public class Engeneer extends Profession {
     }
 
     public Engeneer(String name, String profession) {
-        this.name = name;
-        this.profession = profession;
+        super(name, profession);
     }
     /**
      * Строит дом
