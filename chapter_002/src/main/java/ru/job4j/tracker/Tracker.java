@@ -36,6 +36,7 @@ public class Tracker {
      */
     public void replace(String id, Item item) {
         if (findByID(id) != null) {
+            item.setID(this.items[getPosition(id)].getID());
             this.items[getPosition(id)] = item;
         }
     }
@@ -108,10 +109,7 @@ public class Tracker {
             }
         }
         //Создаем новый массив без null элементов
-        Item[] result = new Item[cons];
-        for (int index = 0; index < cons; index++) {
-            result[index] = itemsnew[index];
-        }
-        return result;
+        itemsnew = Arrays.copyOfRange(itemsnew, 0, cons);
+        return itemsnew;
     }
 }
