@@ -36,8 +36,9 @@ public class Tracker {
      */
     public void replace(String id, Item item) {
         if (findByID(id) != null) {
-            item.setID(this.items[getPosition(id)].getID());
-            this.items[getPosition(id)] = item;
+            int index = getPosition(id);
+            item.setID(id);
+            this.items[index] = item;
         }
     }
 
@@ -75,7 +76,7 @@ public class Tracker {
     public int getPosition(String id) {
         int result = -1;
         for (int index = 0; index < this.position + 1; index++) {
-            if (items[index].getID() == id) {
+            if (items[index].getID().equals(id)) {
                 result = index;
                 break;
             }
