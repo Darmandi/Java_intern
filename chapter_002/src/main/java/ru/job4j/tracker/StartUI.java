@@ -95,7 +95,7 @@ public class StartUI {
         String desc = this.input.ask("Введите описание новой заявки:");
         Item item = new Item(name, desc);
         this.tracker.replace(id, item);
-        System.out.println("Новая заявка с ID: " + item.getID());
+        System.out.println("Заявка отредактирована. ID заявки: " + item.getID());
     }
 
     /**
@@ -105,6 +105,7 @@ public class StartUI {
         System.out.println("------------ Удаление заявки --------------");
         String id = this.input.ask("Введите ID заявки:");
         this.tracker.delete(id);
+        System.out.println("Заявка с ID " + id + " удалена");
     }
 
     /**
@@ -113,7 +114,8 @@ public class StartUI {
     private void findItemID() {
         System.out.println("------------ Поиск заявки по ID--------------");
         String id = this.input.ask("Введите ID заявки:");
-        System.out.println("ID: " + this.tracker.findByID(id).getID() + " Имя заявки: " + this.tracker.findByID(id).getName());
+        Item itemTemp = this.tracker.findByID(id);
+        System.out.println("ID: " + itemTemp.getID() + " Имя заявки: " + itemTemp.getName());
     }
 
     /**

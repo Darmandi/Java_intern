@@ -35,11 +35,9 @@ public class Tracker {
      * @param item новая заявка
      */
     public void replace(String id, Item item) {
-        if (findByID(id) != null) {
             int index = getPosition(id);
             item.setID(id);
             this.items[index] = item;
-        }
     }
 
     /**
@@ -47,10 +45,9 @@ public class Tracker {
      * @param id ключ заявки
      */
     public void delete(String id) {
-        if (findByID(id) != null) {
-                System.arraycopy(items, getPosition(id) + 1, items, getPosition(id), items.length - getPosition(id) - 1);
+        int temp = getPosition(id);
+                System.arraycopy(items, temp + 1, items, temp, items.length - temp - 1);
                 this.position--;
-        }
     }
     /**
      * Метод ищет заявку по id уeникальному ключу
