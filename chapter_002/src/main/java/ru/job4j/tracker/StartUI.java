@@ -81,7 +81,7 @@ public class StartUI {
     private void showItems() {
         System.out.println("------------ Все заявки --------------");
         for (Item item : this.tracker.getAll()) {
-            System.out.println("ID: " + item.getID() + " Имя заявки: " + item.getName());
+            System.out.println(item.toString());
         }
     }
 
@@ -93,10 +93,17 @@ public class StartUI {
         String id = this.input.ask("Введите ID старой заявки:");
         String name = this.input.ask("Введите имя новой заявки:");
         String desc = this.input.ask("Введите описание новой заявки:");
-        Item item = new Item(name, desc);
-        this.tracker.replace(id, item);
-        System.out.println("Заявка отредактирована. ID заявки: " + item.getID());
+        if (this.tracker.findByID(id) != null) {
+            Item item = new Item(name, desc);
+            this.tracker.replace(id, item);
+            System.out.println("Заявка отредактирована. ID заявки: " + item.getID());
+        }
+        else
+            System.out.println("Заявка не найдена");
+
     }
+
+
 
     /**
      * Метод реализует удаление заявки.
@@ -104,8 +111,12 @@ public class StartUI {
     private void deleteItem() {
         System.out.println("------------ Удаление заявки --------------");
         String id = this.input.ask("Введите ID заявки:");
-        this.tracker.delete(id);
-        System.out.println("Заявка с ID " + id + " удалена");
+        if (this.tracker.findByID(id) != null) {
+            this.tracker.delete(id);
+            System.out.println("Заявка с ID " + id + " удалена");
+        }
+        else
+            System.out.println("Заявка не найдена");
     }
 
     /**
@@ -115,7 +126,7 @@ public class StartUI {
         System.out.println("------------ Поиск заявки по ID--------------");
         String id = this.input.ask("Введите ID заявки:");
         Item itemTemp = this.tracker.findByID(id);
-        System.out.println("ID: " + itemTemp.getID() + " Имя заявки: " + itemTemp.getName());
+        System.out.println(itemTemp.toString());
     }
 
     /**
@@ -125,19 +136,19 @@ public class StartUI {
         System.out.println("------------ Поиск заявки по имени--------------");
         String name = this.input.ask("Введите имя заявки:");
         for (Item item : this.tracker.findByName(name)) {
-            System.out.println("ID: " + item.getID() + " Имя заявки: " + item.getName());
+            System.out.println(item.toString());
         }
     }
 
     private void showMenu() {
-        System.out.println("\nМеню.");
-        System.out.println("0. Add new Item\n"
-                + "1. Show all items\n"
-                + "2. Edit item\n"
-                + "3. Delete item\n"
-                + "4. Find item by Id\n"
-                + "5. Find items by name\n"
-                + "6. Exit Program\n");
+        System.out.println(System.lineSeparator() + "Меню.");
+        System.out.println("0. Add new Item" + System.lineSeparator()
+                + "1. Show all items" + System.lineSeparator()
+                + "2. Edit item" + System.lineSeparator()
+                + "3. Delete item" + System.lineSeparator()
+                + "4. Find item by Id" + System.lineSeparator()
+                + "5. Find items by name" + System.lineSeparator()
+                + "6. Exit Program" + System.lineSeparator());
     }
 
     /**

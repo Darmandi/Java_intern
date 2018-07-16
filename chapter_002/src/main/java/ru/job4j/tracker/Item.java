@@ -47,4 +47,7 @@ public class Item {
     public void setComments(String[] comments) {
         this.comments = comments;
     }
+    public String toString() {
+        return "ID: " + getID() + " Имя заявки: " + getName();
+    }
 }
