@@ -40,6 +40,7 @@ public class Tracker {
             if (index != -1) {
                 item.setID(id);
                 this.items[index] = item;
+                result = true;
             }
             return result;
     }
@@ -68,6 +69,7 @@ public class Tracker {
         for (Item item : items) {
             if (item != null && item.getID().equals(id)) {
                 result = item;
+                break;
             }
         }
         return result;
@@ -83,6 +85,7 @@ public class Tracker {
         for (int index = 0; index < this.position; index++) {
             if (items[index].getID().equals(id)) {
                 result = index;
+                break;
             }
         }
         return result;
@@ -93,10 +96,6 @@ public class Tracker {
      * @return список заявок
      */
     public Item[] getAll() {
-        Item[] result = new Item[this.position];
-        for (int index = 0; index < position; index++) {
-            result[index] = this.items[index];
-        }
         //Возвращаем массив без null элементов
         return Arrays.copyOf(this.items, position);
     }

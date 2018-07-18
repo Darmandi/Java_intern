@@ -80,8 +80,13 @@ public class StartUI {
      */
     private void showItems() {
         System.out.println("------------ Все заявки --------------");
-        for (Item item : this.tracker.getAll()) {
-            System.out.println(item.toString());
+        Item[] items = this.tracker.getAll();
+        if (items.length > 0) {
+            for (Item item : items) {
+                System.out.println(item.toString());
+            }
+        } else {
+            System.out.println("Заявки не найдена");
         }
     }
 
@@ -125,7 +130,11 @@ public class StartUI {
         System.out.println("------------ Поиск заявки по ID--------------");
         String id = this.input.ask("Введите ID заявки:");
         Item itemTemp = this.tracker.findByID(id);
-        System.out.println(itemTemp.toString());
+        if (itemTemp != null) {
+            System.out.println(itemTemp.toString());
+        } else {
+            System.out.println("Заявка не найдена");
+        }
     }
 
     /**
@@ -134,8 +143,13 @@ public class StartUI {
     private void findItemName() {
         System.out.println("------------ Поиск заявки по имени--------------");
         String name = this.input.ask("Введите имя заявки:");
-        for (Item item : this.tracker.findByName(name)) {
-            System.out.println(item.toString());
+        Item[] items = this.tracker.findByName(name);
+        if (items.length > 0) {
+            for (Item item : items) {
+                System.out.println(item.toString());
+            }
+        } else {
+            System.out.println("Заявки не найдена");
         }
     }
 
