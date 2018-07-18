@@ -34,6 +34,7 @@ public class TrackerTest {
         tracker.add(item3);
         tracker.delete(item2.getID());
         assertThat(tracker.getAll(), is(new Item[]{item1, item3}));
+        assertThat(tracker.delete("1"), is(false));
     }
     @Test
     public void whenFindByNameThird() {
@@ -57,5 +58,13 @@ public class TrackerTest {
         tracker.add(item3);
         assertThat(tracker.findByID(item2.getID()), is(item2));
     }
-
+    @Test
+    public void whenGetPositionMinus() {
+        Tracker tracker = new Tracker();
+        Item item1 = new Item("test1", "testDescription1");
+        tracker.add(item1);
+        Item item2 = new Item("test2", "testDescription2");
+        tracker.add(item2);
+        assertThat(tracker.getPosition("1"), is(-1));
+    }
 }

@@ -34,20 +34,29 @@ public class Tracker {
      * @param id ключ удаляемой заявки
      * @param item новая заявка
      */
-    public void replace(String id, Item item) {
+    public boolean replace(String id, Item item) {
             int index = getPosition(id);
-            item.setID(id);
-            this.items[index] = item;
+            boolean result = false;
+            if (index != -1) {
+                item.setID(id);
+                this.items[index] = item;
+            }
+            return result;
     }
 
     /**
      * Метод удаляет заявку по ключу и сдвигает позиции в массиве
      * @param id ключ заявки
      */
-    public void delete(String id) {
+    public boolean delete(String id) {
         int temp = getPosition(id);
-                System.arraycopy(items, temp + 1, items, temp, items.length - temp - 1);
-                this.position--;
+        boolean result = false;
+        if (temp != -1) {
+            System.arraycopy(items, temp + 1, items, temp, items.length - temp - 1);
+            this.position--;
+            result = true;
+        }
+        return result;
     }
     /**
      * Метод ищет заявку по id уникальному ключу
@@ -59,7 +68,6 @@ public class Tracker {
         for (Item item : items) {
             if (item != null && item.getID().equals(id)) {
                 result = item;
-                break;
             }
         }
         return result;
@@ -72,10 +80,9 @@ public class Tracker {
      */
     public int getPosition(String id) {
         int result = -1;
-        for (int index = 0; index < this.position + 1; index++) {
+        for (int index = 0; index < this.position; index++) {
             if (items[index].getID().equals(id)) {
                 result = index;
-                break;
             }
         }
         return result;
@@ -90,7 +97,8 @@ public class Tracker {
         for (int index = 0; index < position; index++) {
             result[index] = this.items[index];
         }
-        return result;
+        //Возвращаем массив без null элементов
+        return Arrays.copyOf(this.items, position);
     }
 
     /**
