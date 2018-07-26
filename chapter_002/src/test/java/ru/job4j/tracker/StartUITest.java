@@ -1,15 +1,29 @@
 package ru.job4j.tracker;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class StartUITest {
+    PrintStream stdout = System.out;
+    ByteArrayOutputStream out = new ByteArrayOutputStream();
+
     Tracker tracker = new Tracker();
     Item item1 = tracker.add(new Item("name1", "desc1"));
     Item item2 = tracker.add(new Item("name1", "desc2"));
     Item item3 = tracker.add(new Item("name3", "desc3"));
 
+    @Before
+    public void loadOutput() {
+        System.setOut(new PrintStream(out));
+    }
+    @After
+    public void backOutput() {
+        System.setOut(stdout);
+    }
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Input input = new StubInput(new String[]{"0", "name4", "desc4", "6"});
@@ -45,5 +59,22 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"6"});
         new StartUI(input, tracker).init();
         assertThat(tracker.getAll(), is(new Item[]{item1, item2, item3}));
+    }
+    @Test
+    public void whenCheckConsoleOutput() {
+        Input input = new StubInput(new String[]{"6"});
+        new StartUI(input, tracker).init();
+        assertThat(new String(out.toByteArray()), is(new StringBuilder()
+                .append(System.lineSeparator())
+                .append("Меню.").append(System.lineSeparator())
+                .append("0. Add new Item").append(System.lineSeparator())
+                .append("1. Show all items").append(System.lineSeparator())
+                .append("2. Edit item").append(System.lineSeparator())
+                .append("3. Delete item").append(System.lineSeparator())
+                .append("4. Find item by Id").append(System.lineSeparator())
+                .append("5. Find items by name").append(System.lineSeparator())
+                .append("6. Exit Program").append(System.lineSeparator())
+                .append(System.lineSeparator())
+                .toString()));
     }
 }
