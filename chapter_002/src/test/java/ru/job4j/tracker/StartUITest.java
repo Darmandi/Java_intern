@@ -11,6 +11,19 @@ public class StartUITest {
     PrintStream stdout = System.out;
     ByteArrayOutputStream out = new ByteArrayOutputStream();
 
+    String menu = new StringBuilder()
+            .append(System.lineSeparator())
+            .append("Меню.").append(System.lineSeparator())
+            .append("0. Add new Item").append(System.lineSeparator())
+            .append("1. Show all items").append(System.lineSeparator())
+            .append("2. Edit item").append(System.lineSeparator())
+            .append("3. Delete item").append(System.lineSeparator())
+            .append("4. Find item by Id").append(System.lineSeparator())
+            .append("5. Find items by name").append(System.lineSeparator())
+            .append("6. Exit Program").append(System.lineSeparator())
+            .append(System.lineSeparator())
+            .toString();
+
     Tracker tracker = new Tracker();
     Item item1 = tracker.add(new Item("name1", "desc1"));
     Item item2 = tracker.add(new Item("name1", "desc2"));
@@ -65,16 +78,7 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"6"});
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(new StringBuilder()
-                .append(System.lineSeparator())
-                .append("Меню.").append(System.lineSeparator())
-                .append("0. Add new Item").append(System.lineSeparator())
-                .append("1. Show all items").append(System.lineSeparator())
-                .append("2. Edit item").append(System.lineSeparator())
-                .append("3. Delete item").append(System.lineSeparator())
-                .append("4. Find item by Id").append(System.lineSeparator())
-                .append("5. Find items by name").append(System.lineSeparator())
-                .append("6. Exit Program").append(System.lineSeparator())
-                .append(System.lineSeparator())
+                .append(menu)
                 .toString()));
     }
     @Test
@@ -82,28 +86,10 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"0", "name4", "desc4", "6"});
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(new StringBuilder()
-                .append(System.lineSeparator())
-                .append("Меню.").append(System.lineSeparator())
-                .append("0. Add new Item").append(System.lineSeparator())
-                .append("1. Show all items").append(System.lineSeparator())
-                .append("2. Edit item").append(System.lineSeparator())
-                .append("3. Delete item").append(System.lineSeparator())
-                .append("4. Find item by Id").append(System.lineSeparator())
-                .append("5. Find items by name").append(System.lineSeparator())
-                .append("6. Exit Program").append(System.lineSeparator())
-                .append(System.lineSeparator())
+                .append(menu)
                 .append("------------ Добавление новой заявки --------------").append(System.lineSeparator())
                 .append("Новая заявка с ID: ").append(tracker.getAll()[3].getID()).append(System.lineSeparator())
-                .append(System.lineSeparator())
-                .append("Меню.").append(System.lineSeparator())
-                .append("0. Add new Item").append(System.lineSeparator())
-                .append("1. Show all items").append(System.lineSeparator())
-                .append("2. Edit item").append(System.lineSeparator())
-                .append("3. Delete item").append(System.lineSeparator())
-                .append("4. Find item by Id").append(System.lineSeparator())
-                .append("5. Find items by name").append(System.lineSeparator())
-                .append("6. Exit Program").append(System.lineSeparator())
-                .append(System.lineSeparator())
+                .append(menu)
                 .toString()));
     }
     @Test
@@ -111,28 +97,10 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"2", item1.getID(), "edited name", "edited desc", "6"});
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(new StringBuilder()
-                .append(System.lineSeparator())
-                .append("Меню.").append(System.lineSeparator())
-                .append("0. Add new Item").append(System.lineSeparator())
-                .append("1. Show all items").append(System.lineSeparator())
-                .append("2. Edit item").append(System.lineSeparator())
-                .append("3. Delete item").append(System.lineSeparator())
-                .append("4. Find item by Id").append(System.lineSeparator())
-                .append("5. Find items by name").append(System.lineSeparator())
-                .append("6. Exit Program").append(System.lineSeparator())
-                .append(System.lineSeparator())
+                .append(menu)
                 .append("------------ Изменение заявки --------------").append(System.lineSeparator())
                 .append("Заявка отредактирована. ID заявки: ").append(item1.getID()).append(System.lineSeparator())
-                .append(System.lineSeparator())
-                .append("Меню.").append(System.lineSeparator())
-                .append("0. Add new Item").append(System.lineSeparator())
-                .append("1. Show all items").append(System.lineSeparator())
-                .append("2. Edit item").append(System.lineSeparator())
-                .append("3. Delete item").append(System.lineSeparator())
-                .append("4. Find item by Id").append(System.lineSeparator())
-                .append("5. Find items by name").append(System.lineSeparator())
-                .append("6. Exit Program").append(System.lineSeparator())
-                .append(System.lineSeparator())
+                .append(menu)
                 .toString()));
     }
     @Test
@@ -141,28 +109,10 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"3", id2, "6"});
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(new StringBuilder()
-                .append(System.lineSeparator())
-                .append("Меню.").append(System.lineSeparator())
-                .append("0. Add new Item").append(System.lineSeparator())
-                .append("1. Show all items").append(System.lineSeparator())
-                .append("2. Edit item").append(System.lineSeparator())
-                .append("3. Delete item").append(System.lineSeparator())
-                .append("4. Find item by Id").append(System.lineSeparator())
-                .append("5. Find items by name").append(System.lineSeparator())
-                .append("6. Exit Program").append(System.lineSeparator())
-                .append(System.lineSeparator())
+                .append(menu)
                 .append("------------ Удаление заявки --------------").append(System.lineSeparator())
                 .append("Заявка с ID ").append(id2).append(" удалена").append(System.lineSeparator())
-                .append(System.lineSeparator())
-                .append("Меню.").append(System.lineSeparator())
-                .append("0. Add new Item").append(System.lineSeparator())
-                .append("1. Show all items").append(System.lineSeparator())
-                .append("2. Edit item").append(System.lineSeparator())
-                .append("3. Delete item").append(System.lineSeparator())
-                .append("4. Find item by Id").append(System.lineSeparator())
-                .append("5. Find items by name").append(System.lineSeparator())
-                .append("6. Exit Program").append(System.lineSeparator())
-                .append(System.lineSeparator())
+                .append(menu)
                 .toString()));
     }
     @Test
@@ -170,30 +120,12 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"1", "6"});
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(new StringBuilder()
-                .append(System.lineSeparator())
-                .append("Меню.").append(System.lineSeparator())
-                .append("0. Add new Item").append(System.lineSeparator())
-                .append("1. Show all items").append(System.lineSeparator())
-                .append("2. Edit item").append(System.lineSeparator())
-                .append("3. Delete item").append(System.lineSeparator())
-                .append("4. Find item by Id").append(System.lineSeparator())
-                .append("5. Find items by name").append(System.lineSeparator())
-                .append("6. Exit Program").append(System.lineSeparator())
-                .append(System.lineSeparator())
+                .append(menu)
                 .append("------------ Все заявки --------------").append(System.lineSeparator())
                 .append("ID: ").append(item1.getID()).append(" Имя заявки: ").append(item1.getName()).append(System.lineSeparator())
                 .append("ID: ").append(item2.getID()).append(" Имя заявки: ").append(item2.getName()).append(System.lineSeparator())
                 .append("ID: ").append(item3.getID()).append(" Имя заявки: ").append(item3.getName()).append(System.lineSeparator())
-                .append(System.lineSeparator())
-                .append("Меню.").append(System.lineSeparator())
-                .append("0. Add new Item").append(System.lineSeparator())
-                .append("1. Show all items").append(System.lineSeparator())
-                .append("2. Edit item").append(System.lineSeparator())
-                .append("3. Delete item").append(System.lineSeparator())
-                .append("4. Find item by Id").append(System.lineSeparator())
-                .append("5. Find items by name").append(System.lineSeparator())
-                .append("6. Exit Program").append(System.lineSeparator())
-                .append(System.lineSeparator())
+                .append(menu)
                 .toString()));
     }
 }
