@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
-import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * @author Dmitrii Saraev
@@ -41,6 +42,18 @@ public class StartUI {
      * Основой цикл программы.
      */
     public void init() {
+        MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        List<Integer> range = new ArrayList<>();
+        menu.fillActions();
+        for (int i = 0; i < menu.getActionsLength(); i++) {
+            range.add(i);
+        }
+        do {
+            menu.show();
+            menu.select(Integer.parseInt(input.ask("select:")));
+        } while (!"y".equals(this.input.ask("Exit?(y): ")));
+    }
+    /**public void init() {
         boolean exit = false;
         while (!exit) {
             this.showMenu();
