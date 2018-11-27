@@ -56,11 +56,11 @@ public class MenuTracker {
             String desc = input.ask("Please, provide item description:");
             Item item = new Item(name, desc);
             tracker.add(item);
-            System.out.println("------------ New Item with Id : " + item.getID() + "Name : " + item.getName() + "Description : " + item.desc);
+            System.out.println("New Item with Id : " + item.getID());
         }
         @Override
         public String info() {
-            return "0. Add new Item.";
+            return "0. Add new Item";
         }
     }
 
@@ -83,7 +83,7 @@ public class MenuTracker {
         }
         @Override
         public String info() {
-            return "1. Show all items.";
+            return "1. Show all items";
         }
     }
 
@@ -108,7 +108,7 @@ public class MenuTracker {
         }
         @Override
         public String info() {
-            return "2. Edit item.";
+            return "2. Edit item";
         }
     }
 
@@ -123,14 +123,14 @@ public class MenuTracker {
             String id = input.ask("Enter item's ID:");
             boolean result = tracker.delete(id);
             if (result) {
-                System.out.println("Item with ID " + id + " has been deleted");
+                System.out.println("Item with ID " + id + " was deleted");
             } else {
                 System.out.println("No items found");
             }
         }
         @Override
         public String info() {
-            return "3. Delete item.";
+            return "3. Delete item";
         }
     }
 }
@@ -153,7 +153,7 @@ public class MenuTracker {
     }
     @Override
     public String info() {
-        return "4. Find item by ID.";
+        return "4. Find item by ID";
     }
 }
 
@@ -177,6 +177,6 @@ class FindItemsByName implements UserAction {
     }
     @Override
     public String info() {
-        return "5. Find item by name.";
+        return "5. Find item by name";
     }
 }
