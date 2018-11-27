@@ -87,7 +87,7 @@ public class MenuTracker {
         }
     }
 
-    public static class EditItem implements UserAction{
+    public static class EditItem implements UserAction {
         @Override
         public int key() {
             return 2;
@@ -112,7 +112,7 @@ public class MenuTracker {
         }
     }
 
-    public static class DeleteItem implements UserAction{
+    public static class DeleteItem implements UserAction {
         @Override
         public int key() {
             return 3;
