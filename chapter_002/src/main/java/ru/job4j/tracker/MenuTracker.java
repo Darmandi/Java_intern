@@ -22,12 +22,12 @@ public class MenuTracker {
     }
 
     public void fillActions() {
-        this.actions.add(new AddItem());
-        this.actions.add(new ShowItems());
-        this.actions.add(new MenuTracker.EditItem());
-        this.actions.add(new MenuTracker.DeleteItem());
-        this.actions.add(new FindItemById());
-        this.actions.add(new FindItemsByName());
+        this.actions.add(new AddItem(0, "Add new Item"));
+        this.actions.add(new ShowItems(1, "Show all items"));
+        this.actions.add(new MenuTracker.EditItem(2, "Edit item"));
+        this.actions.add(new MenuTracker.DeleteItem(3, "Delete item"));
+        this.actions.add(new FindItemById(4, "Find item by ID"));
+        this.actions.add(new FindItemsByName(5, "Find item by name"));
     }
 
 
@@ -44,10 +44,9 @@ public class MenuTracker {
         }
     }
 
-    private class AddItem implements UserAction {
-        @Override
-        public int key() {
-            return 0;
+    private class AddItem extends BaseAction {
+        public AddItem(int key, String name) {
+            super(key, name);
         }
         @Override
         public void execute(Input input, Tracker tracker) {
@@ -58,16 +57,11 @@ public class MenuTracker {
             tracker.add(item);
             System.out.println("New Item with Id : " + item.getID());
         }
-        @Override
-        public String info() {
-            return "0. Add new Item";
-        }
     }
 
-    private class ShowItems implements UserAction {
-        @Override
-        public int key() {
-            return 1;
+    private class ShowItems extends BaseAction {
+        public ShowItems(int key, String name) {
+            super(key, name);
         }
         @Override
         public void execute(Input input, Tracker tracker) {
@@ -81,16 +75,11 @@ public class MenuTracker {
                 System.out.println("No items found");
             }
         }
-        @Override
-        public String info() {
-            return "1. Show all items";
-        }
     }
 
-    public static class EditItem implements UserAction {
-        @Override
-        public int key() {
-            return 2;
+    public static class EditItem extends BaseAction {
+        public EditItem(int key, String name) {
+            super(key, name);
         }
         @Override
         public void execute(Input input, Tracker tracker) {
@@ -106,16 +95,11 @@ public class MenuTracker {
                 System.out.println("No items found");
             }
         }
-        @Override
-        public String info() {
-            return "2. Edit item";
-        }
     }
 
-    public static class DeleteItem implements UserAction {
-        @Override
-        public int key() {
-            return 3;
+    public static class DeleteItem extends BaseAction {
+        public DeleteItem(int key, String name) {
+            super(key, name);
         }
         @Override
         public void execute(Input input, Tracker tracker) {
@@ -128,18 +112,13 @@ public class MenuTracker {
                 System.out.println("No items found");
             }
         }
-        @Override
-        public String info() {
-            return "3. Delete item";
-        }
     }
 }
 
-    class FindItemById implements UserAction {
-    @Override
-    public int key() {
-        return 4;
-    }
+class FindItemById extends BaseAction {
+    public FindItemById(int key, String name) {
+            super(key, name);
+        }
     @Override
     public void execute(Input input, Tracker tracker) {
         System.out.println("------------ Find item by ID--------------");
@@ -151,16 +130,11 @@ public class MenuTracker {
             System.out.println("No items found");
         }
     }
-    @Override
-    public String info() {
-        return "4. Find item by ID";
-    }
 }
 
-class FindItemsByName implements UserAction {
-    @Override
-    public int key() {
-        return 5;
+class FindItemsByName extends BaseAction {
+    public FindItemsByName(int key, String name) {
+        super(key, name);
     }
     @Override
     public void execute(Input input, Tracker tracker) {
@@ -174,9 +148,5 @@ class FindItemsByName implements UserAction {
         } else {
             System.out.println("No items found");
         }
-    }
-    @Override
-    public String info() {
-        return "5. Find item by name";
     }
 }
