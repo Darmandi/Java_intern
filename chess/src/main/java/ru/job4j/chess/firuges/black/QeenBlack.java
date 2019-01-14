@@ -25,10 +25,10 @@ public class QeenBlack implements Figure {
     public Cell[] way(Cell source, Cell dest) {
         Cell[] steps = new Cell[0];
         if (Movement.diagonal(source, dest)) {
-            steps = new Cell[] {dest };
+            steps = Movement.rout(source, dest);
         }
         if (Movement.straight(source, dest)) {
-            steps = new Cell[] {dest };
+            steps = Movement.rout(source, dest);
         }
         return steps;
     }
