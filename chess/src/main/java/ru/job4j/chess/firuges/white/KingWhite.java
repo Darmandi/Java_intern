@@ -1,5 +1,6 @@
 package ru.job4j.chess.firuges.white;
 
+import ru.job4j.chess.ImpossibleMoveException;
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 import ru.job4j.chess.firuges.Movement;
@@ -26,9 +27,10 @@ public class KingWhite implements Figure {
         Cell[] steps = new Cell[0];
         if (Movement.kingDiagonal(source, dest)) {
             steps = new Cell[] {dest };
-        }
-        if (Movement.kingStraight(source, dest)) {
+        } else if (Movement.kingStraight(source, dest)) {
             steps = new Cell[] {dest };
+        } else {
+            throw new ImpossibleMoveException("Невозможно сделать ход");
         }
         return steps;
     }

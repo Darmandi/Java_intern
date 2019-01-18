@@ -1,5 +1,6 @@
 package ru.job4j.chess.firuges.black;
 
+import ru.job4j.chess.ImpossibleMoveException;
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 import ru.job4j.chess.firuges.Movement;
@@ -26,9 +27,10 @@ public class QeenBlack implements Figure {
         Cell[] steps = new Cell[0];
         if (Movement.diagonal(source, dest)) {
             steps = Movement.rout(source, dest);
-        }
-        if (Movement.straight(source, dest)) {
+        } else if (Movement.straight(source, dest)) {
             steps = Movement.rout(source, dest);
+        } else {
+            throw new ImpossibleMoveException("Невозможно сделать ход");
         }
         return steps;
     }

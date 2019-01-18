@@ -24,33 +24,13 @@ public class Logic {
         int index = this.findBy(source);
         if (index != -1) {
             Cell[] steps = this.figures[index].way(source, dest);
-            int j = 0;
+            rst = checkMove(source, dest);
             if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
-
-                //Проверка, что фигура не переходит на уже занятое поле
-                // и не перепрыгивает через фигуру
-                if (Movement.straight(source, dest) || Movement.diagonal(source, dest)) {
-                    for (Cell y : Movement.rout(source, dest)) {
-                        for (Figure i : figures) {
-                            if (y != i.position())
-                                j++;
-                        }
-                    }
-                    if (j == 32 || j == 64 || j == 96 || j == 128 || j == 160 || j == 192 || j == 224) {
-                        rst = true;
-                        this.figures[index] = this.figures[index].copy(dest);
-                    }
+                if (!rst) {
+                    throw new ImpossibleMoveException("Невозможно сделать ход");
                 }
-                if (Movement.knight(source, dest)  || Movement.pawnWhiteMove(source, dest) || Movement.pawnBlackMove(source, dest)) {
-                    for (Figure i : figures) {
-                        if (dest != i.position())
-                            j++;
-                    }
-                    if (j == 32) {
-                        rst = true;
-                        this.figures[index] = this.figures[index].copy(dest);
-                    }
-                }
+            } else {
+                throw new ImpossibleMoveException("Невозможно сделать ход");
             }
         }
         return rst;
@@ -69,6 +49,40 @@ public class Logic {
             if (this.figures[index] != null && this.figures[index].position().equals(cell)) {
                 rst = index;
                 break;
+            }
+        }
+        return rst;
+    }
+
+    //Проверка, что фигура не переходит на уже занятое поле
+    // и не перепрыгивает через фигуру
+    public boolean checkMove(Cell source, Cell dest) {
+        boolean rst = false;
+        int index = this.findBy(source);
+        int j = 0;
+        if (Movement.straight(source, dest) || Movement.diagonal(source, dest)) {
+            for (Cell y : Movement.rout(source, dest)) {
+                for (Figure i : figures) {
+                    if (y != i.position()) {
+                        j++;
+                    }
+                }
+            }
+            if (j == 32 || j == 64 || j == 96 || j == 128 || j == 160 || j == 192 || j == 224) {
+                rst = true;
+
+                this.figures[index] = this.figures[index].copy(dest);
+            }
+        }
+        if (Movement.knight(source, dest)  || Movement.pawnWhiteMove(source, dest) || Movement.pawnBlackMove(source, dest)) {
+            for (Figure i : figures) {
+                if (dest != i.position()) {
+                    j++;
+                }
+            }
+            if (j == 32) {
+                rst = true;
+                this.figures[index] = this.figures[index].copy(dest);
             }
         }
         return rst;

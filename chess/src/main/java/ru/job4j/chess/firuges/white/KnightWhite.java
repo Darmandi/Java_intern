@@ -1,5 +1,6 @@
 package ru.job4j.chess.firuges.white;
 
+import ru.job4j.chess.ImpossibleMoveException;
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 import ru.job4j.chess.firuges.Movement;
@@ -26,6 +27,8 @@ public class KnightWhite implements Figure {
         Cell[] steps = new Cell[0];
         if (Movement.knight(source, dest)) {
             steps = new Cell[] {dest };
+        } else {
+            throw new ImpossibleMoveException("Невозможно сделать ход");
         }
         return steps;
     }

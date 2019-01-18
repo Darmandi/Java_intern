@@ -83,10 +83,18 @@ public class LogicTest {
         logic.add(figure31);
         logic.add(figure32);
     }
-    @Test
-    public void rookA1() {
+    @Test(expected = ImpossibleMoveException.class)
+    public void rookA1A2() {
         assertThat(logic.move(Cell.A1, Cell.A2), is(false));
+    }
+
+    @Test(expected = ImpossibleMoveException.class)
+    public void rookA1B1() {
         assertThat(logic.move(Cell.A1, Cell.B1), is(false));
+    }
+
+    @Test(expected = ImpossibleMoveException.class)
+    public void rookA1C1() {
         assertThat(logic.move(Cell.A1, Cell.C1), is(false));
     }
 
@@ -96,31 +104,36 @@ public class LogicTest {
         assertThat(logic.move(Cell.F1, Cell.F4), is(true));
     }
 
+    @Test(expected = ImpossibleMoveException.class)
+    public void rookA2C2() {
+        assertThat(logic.move(Cell.A2, Cell.C2), is(false));
+    }
+
     @Test
     public void knightA2() {
-        assertThat(logic.move(Cell.A2, Cell.C2), is(false));
         assertThat(logic.move(Cell.A2, Cell.C3), is(true));
         assertThat(logic.move(Cell.C3, Cell.D5), is(true));
     }
 
+    @Test(expected = ImpossibleMoveException.class)
+    public void rookB2C2() {
+        assertThat(logic.move(Cell.B2, Cell.C2), is(false));
+    }
+
     @Test
     public void knightB2() {
-        assertThat(logic.move(Cell.B2, Cell.C2), is(false));
         assertThat(logic.move(Cell.B2, Cell.C4), is(true));
         assertThat(logic.move(Cell.C4, Cell.E3), is(true));
     }
 
-    @Test
-    public void bishopA3() {
-        assertThat(logic.move(Cell.A3, Cell.B2), is(false));
+    @Test(expected = ImpossibleMoveException.class)
+    public void bishopA3() throws ImpossibleMoveException {
         assertThat(logic.move(Cell.A3, Cell.B3), is(false));
-        assertThat(logic.move(Cell.A3, Cell.A4), is(false));
     }
 
     @Test
     public void bishopB3() {
         assertThat(logic.move(Cell.B3, Cell.D1), is(true));
-        assertThat(logic.move(Cell.D1, Cell.G4), is(false));
         assertThat(logic.move(Cell.D1, Cell.F3), is(true));
     }
 
@@ -129,12 +142,15 @@ public class LogicTest {
         assertThat(logic.move(Cell.B4, Cell.E4), is(true));
         assertThat(logic.move(Cell.E4, Cell.E8), is(true));
         assertThat(logic.move(Cell.E8, Cell.C6), is(true));
-        assertThat(logic.move(Cell.C6, Cell.D4), is(false));
+    }
+
+    @Test(expected = ImpossibleMoveException.class)
+    public void rookB5D5() {
+        assertThat(logic.move(Cell.B5, Cell.D5), is(false));
     }
 
     @Test
     public void kingB5() {
-        assertThat(logic.move(Cell.B5, Cell.D5), is(false));
         assertThat(logic.move(Cell.B5, Cell.C4), is(true));
         assertThat(logic.move(Cell.C4, Cell.C5), is(true));
         assertThat(logic.move(Cell.C5, Cell.D5), is(true));
