@@ -27,11 +27,13 @@ public class Logic {
             rst = checkMove(source, dest);
             if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
                 if (!rst) {
-                    throw new ImpossibleMoveException("Невозможно сделать ход");
+                    throw new OccupiedWayException("Путь перекрыт");
                 }
             } else {
                 throw new ImpossibleMoveException("Невозможно сделать ход");
             }
+        } else {
+            throw new FigureNotFoundException("Фигура не найдена");
         }
         return rst;
     }

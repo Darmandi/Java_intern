@@ -19,20 +19,10 @@ public class Movement {
     //Движение по диагонали
     public static boolean diagonal(Cell source, Cell dest) {
         boolean res = false;
-        int[] array = {1, 2, 3, 4, 5, 6, 7};
-        for (int i : array) {
-            if (dest.y == source.y + i && dest.x == source.x + i) {
-                res = true;
-            }
-            if (dest.y == source.y + i && dest.x == source.x - i) {
-                res = true;
-            }
-            if (dest.y == source.y - i && dest.x == source.x + i) {
-                res = true;
-            }
-            if (dest.y == source.y - i && dest.x == source.x - i) {
-                res = true;
-            }
+        int deltaX = dest.x - source.x;
+        int deltaY = dest.y - source.y;
+        if (Math.abs(deltaX) == Math.abs(deltaY)) {
+            res = true;
         }
         return res;
     }
@@ -40,20 +30,10 @@ public class Movement {
     //Движение по вертикали и горизонтали
     public static boolean straight(Cell source, Cell dest) {
         boolean res = false;
-        int[] array = {1, 2, 3, 4, 5, 6, 7};
-        for (int i:array) {
-            if (source.y == dest.y + i && source.x == dest.x) {
-                res = true;
-            }
-            if (source.y == dest.y - i && source.x == dest.x) {
-                res = true;
-            }
-            if (source.y == dest.y && source.x == dest.x + i) {
-                res = true;
-            }
-            if (source.y == dest.y && source.x == dest.x - i) {
-                res = true;
-            }
+        int deltaX = dest.x - source.x;
+        int deltaY = dest.y - source.y;
+        if (deltaX == 0 || deltaY == 0) {
+            res = true;
         }
         return res;
     }

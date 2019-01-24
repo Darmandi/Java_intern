@@ -83,17 +83,17 @@ public class LogicTest {
         logic.add(figure31);
         logic.add(figure32);
     }
-    @Test(expected = ImpossibleMoveException.class)
+    @Test(expected = OccupiedWayException.class)
     public void rookA1A2() {
         assertThat(logic.move(Cell.A1, Cell.A2), is(false));
     }
 
-    @Test(expected = ImpossibleMoveException.class)
+    @Test(expected = OccupiedWayException.class)
     public void rookA1B1() {
         assertThat(logic.move(Cell.A1, Cell.B1), is(false));
     }
 
-    @Test(expected = ImpossibleMoveException.class)
+    @Test(expected = OccupiedWayException.class)
     public void rookA1C1() {
         assertThat(logic.move(Cell.A1, Cell.C1), is(false));
     }
@@ -154,5 +154,10 @@ public class LogicTest {
         assertThat(logic.move(Cell.B5, Cell.C4), is(true));
         assertThat(logic.move(Cell.C4, Cell.C5), is(true));
         assertThat(logic.move(Cell.C5, Cell.D5), is(true));
+    }
+
+    @Test(expected = FigureNotFoundException.class)
+    public void C1() {
+        assertThat(logic.move(Cell.C1, Cell.C4), is(true));
     }
 }
