@@ -24,10 +24,12 @@ public class Logic {
         int index = this.findBy(source);
         if (index != -1) {
             Cell[] steps = this.figures[index].way(source, dest);
-            rst = checkMove(source, dest);
             if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
-                if (!rst) {
+                if (checkMove(source, dest) == false) {
                     throw new OccupiedWayException("Путь перекрыт");
+                } else {
+                    this.figures[index] = this.figures[index].copy(dest);
+                    rst = true;
                 }
             } else {
                 throw new ImpossibleMoveException("Невозможно сделать ход");
@@ -59,32 +61,23 @@ public class Logic {
     //Проверка, что фигура не переходит на уже занятое поле
     // и не перепрыгивает через фигуру
     public boolean checkMove(Cell source, Cell dest) {
-        boolean rst = false;
+        boolean rst = true;
         int index = this.findBy(source);
-        int j = 0;
+        Cell[] steps = this.figures[index].way(source, dest);
         if (Movement.straight(source, dest) || Movement.diagonal(source, dest)) {
-            for (Cell y : Movement.rout(source, dest)) {
+            for (Cell y : steps) {
                 for (Figure i : figures) {
-                    if (y != i.position()) {
-                        j++;
+                    if (y == i.position()) {
+                        rst = false;
                     }
                 }
             }
-            if (j == 32 || j == 64 || j == 96 || j == 128 || j == 160 || j == 192 || j == 224) {
-                rst = true;
-
-                this.figures[index] = this.figures[index].copy(dest);
-            }
         }
-        if (Movement.knight(source, dest)  || Movement.pawnWhiteMove(source, dest) || Movement.pawnBlackMove(source, dest)) {
+        if (Movement.knight(source, dest) || Movement.pawnWhiteMove(source, dest) || Movement.pawnBlackMove(source, dest)) {
             for (Figure i : figures) {
-                if (dest != i.position()) {
-                    j++;
+                if (steps[0] == i.position()) {
+                    rst = false;
                 }
-            }
-            if (j == 32) {
-                rst = true;
-                this.figures[index] = this.figures[index].copy(dest);
             }
         }
         return rst;
