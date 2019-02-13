@@ -16,11 +16,7 @@ public class PriorityQueue {
             list.add(task);
         } else {
             for (int i = 0; i < size; i++) {
-                if (list.getLast().equals(list.get(i)) && list.getLast().getPriority() <= task.getPriority()) {
-                    list.addLast(task);
-                } else if (list.getLast().equals(list.get(i)) && list.getLast().getPriority() > task.getPriority()) {
-                    list.add(i, task);
-                } else if (list.get(i).getPriority() <= task.getPriority() && list.get(i + 1).getPriority() > task.getPriority()) {
+                if (list.get(i).getPriority() <= task.getPriority() && list.get(i + 1).getPriority() > task.getPriority()) {
                     list.add(i + 1, task);
                     break;
                 }
