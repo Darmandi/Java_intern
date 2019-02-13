@@ -19,9 +19,9 @@ public class Coffee {
      */
     int[] changes(int value, int price) {
         int change = value - price;
-        int[] res = new int[100];
+        int[] res = new int[change];
         int y = 0;
-        for (int i = 0; i < 4;) {
+        for (int i = 0; i < monets.length;) {
             if (change / monets[i] >= 1) {
                 for (int x = 0; x < change / monets[i]; x++) {
                     if (change - monets[i] >= 0) {
