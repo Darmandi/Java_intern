@@ -8,24 +8,18 @@ public class PriorityQueue {
     /**
      * Метод должен вставлять в нужную позицию элемент.
      * Позиция определяется по полю priority.
+     * Если не выполняется условие в цикле, task помещается в конце
      * @param task элемент
      */
     public void put(Task task) {
-        int size = list.size();
-        if (size == 0) {
-            list.add(task);
-        } else {
-            for (int i = 0; i < size; i++) {
-                if (list.getLast().equals(list.get(i)) && list.getLast().getPriority() <= task.getPriority()) {
-                    list.addLast(task);
-                } else if (list.getLast().equals(list.get(i)) && list.getLast().getPriority() > task.getPriority()) {
-                    list.add(i, task);
-                } else if (list.get(i).getPriority() <= task.getPriority() && list.get(i + 1).getPriority() > task.getPriority()) {
-                    list.add(i + 1, task);
-                    break;
-                }
+        int index = list.size();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getPriority() > task.getPriority()) {
+                index = i;
+                break;
             }
         }
+        list.add(index, task);
     }
 
     public Task take(int index) {
