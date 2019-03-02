@@ -14,18 +14,20 @@ public class ConvertList2Array {
         int[][] array = new int[rows][cells];
         int index = 0;
         int indexrow = 0;
-        for (int[] row : array) {
-            int indexcell = 0;
-            for (int cell : row) {
-                if (index >= list.size()) {
-                    array[indexrow][indexcell] = 0;
-                } else {
-                    array[indexrow][indexcell] = list.get(index);
-                    index++;
-                }
-                indexcell++;
+        int indexcell = 0;
+        for (int elem : list) {
+            if (index + 1 > list.size()) {
+                array[indexrow][indexcell] = 0;
+            } else {
+                array[indexrow][indexcell] = elem;
+                index++;
             }
-            indexrow++;
+            if (indexcell < cells - 1) {
+                indexcell++;
+            } else {
+                indexcell = 0;
+                indexrow++;
+            }
         }
         return array;
     }
