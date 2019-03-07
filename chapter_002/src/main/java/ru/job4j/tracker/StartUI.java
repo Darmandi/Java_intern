@@ -93,8 +93,8 @@ public class StartUI {
      */
     private void showItems() {
         System.out.println("------------ Все заявки --------------");
-        Item[] items = this.tracker.getAll();
-        if (items.length > 0) {
+        List<Item> items = this.tracker.getAll();
+        if (items.size() > 0) {
             for (Item item : items) {
                 System.out.println(item.toString());
             }
@@ -156,8 +156,8 @@ public class StartUI {
     private void findItemName() {
         System.out.println("------------ Поиск заявки по имени--------------");
         String name = this.input.ask("Введите имя заявки:");
-        Item[] items = this.tracker.findByName(name);
-        if (items.length > 0) {
+        List<Item> items = this.tracker.findByName(name);
+        if (items.size() > 0) {
             for (Item item : items) {
                 System.out.println(item.toString());
             }

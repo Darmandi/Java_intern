@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 import org.junit.Test;
+import java.util.Arrays;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -11,7 +12,7 @@ public class TrackerTest {
         tracker.add(item1);
         Item item2 = new Item("test2", "testDescription2");
         tracker.add(item2);
-        assertThat(tracker.getAll(), is(new Item[]{item1, item2}));
+        assertThat(tracker.getAll(), is(Arrays.asList(item1, item2)));
     }
     @Test
     public void whenReplaceNameThenReturnNewName() {
@@ -33,7 +34,7 @@ public class TrackerTest {
         Item item3 = new Item("test3", "testDescription3");
         tracker.add(item3);
         tracker.delete(item2.getID());
-        assertThat(tracker.getAll(), is(new Item[]{item1, item3}));
+        assertThat(tracker.getAll(), is(Arrays.asList(item1, item3)));
         assertThat(tracker.delete("1"), is(false));
     }
     @Test
@@ -45,7 +46,7 @@ public class TrackerTest {
         tracker.add(item2);
         Item item3 = new Item("test3", "testDescription3");
         tracker.add(item3);
-        assertThat(tracker.findByName("test3"), is(new Item[]{item3}));
+        assertThat(tracker.findByName("test3"), is(Arrays.asList(item3)));
     }
     @Test
     public void whenFindByIDSecond() {

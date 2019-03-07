@@ -7,8 +7,8 @@ import java.util.*;
  */
 
 public class Tracker {
-    private Item[] items = new Item[100];
-    private int position = 0;
+    private List<Item> items = new ArrayList<>();
+    //private int position = 0;
     private static final Random RN = new Random();
 
     /**
@@ -17,7 +17,7 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setID(this.generateId());
-        this.items[this.position++] = item;
+        this.items.add(item);
         return item;
     }
 
@@ -39,7 +39,7 @@ public class Tracker {
             boolean result = false;
             if (index != -1) {
                 item.setID(id);
-                this.items[index] = item;
+                this.items.set(index, item);
                 result = true;
             }
             return result;
@@ -53,8 +53,7 @@ public class Tracker {
         int temp = getPosition(id);
         boolean result = false;
         if (temp != -1) {
-            System.arraycopy(items, temp + 1, items, temp, items.length - temp - 1);
-            this.position--;
+            items.remove(temp);
             result = true;
         }
         return result;
@@ -82,8 +81,8 @@ public class Tracker {
      */
     public int getPosition(String id) {
         int result = -1;
-        for (int index = 0; index < this.position; index++) {
-            if (items[index].getID().equals(id)) {
+        for (int index = 0; index < this.items.size(); index++) {
+            if (items.get(index).getID().equals(id)) {
                 result = index;
                 break;
             }
@@ -95,9 +94,9 @@ public class Tracker {
      * Метод отображает все заявки
      * @return список заявок
      */
-    public Item[] getAll() {
+    public List<Item> getAll() {
         //Возвращаем массив без null элементов
-        return Arrays.copyOf(this.items, position);
+        return this.items;
     }
 
     /**
@@ -105,16 +104,13 @@ public class Tracker {
      * @param name имя заявки
      * @return массив совпадений
      */
-    public Item[] findByName(String name) {
-        int cons = 0;
-        Item[] itemsnew = new Item[100];
-        for (int index = 0; index < position; index++) {
-            if (items[index].getName().equals(name)) {
-                itemsnew[cons++] = items[index];
+    public List<Item> findByName(String name) {
+        List<Item> itemsnew = new ArrayList<>();
+        for (Item item: items) {
+            if (item.getName().equals(name)) {
+                itemsnew.add(item);
             }
         }
-        //Создаем новый массив без null элементов
-        itemsnew = Arrays.copyOfRange(itemsnew, 0, cons);
         return itemsnew;
     }
 }

@@ -2,7 +2,7 @@ package ru.job4j.tracker.trackersingleton;
 
 import org.junit.Test;
 import ru.job4j.tracker.Item;
-
+import java.util.Arrays;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -14,7 +14,7 @@ public class TrackerSingleStaticFinalClassTest {
 
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
-        assertThat(tracker.getAll(), is(new Item[]{item1, item2, item3}));
+        assertThat(tracker.getAll(), is(Arrays.asList(item1, item2, item3)));
     }
     @Test
     public void whenReplaceNameThenReturnNewName() {
@@ -26,12 +26,12 @@ public class TrackerSingleStaticFinalClassTest {
     @Test
     public void whenDeleteSecondThenReturnFirstThird() {
         tracker.delete(item2.getID());
-        assertThat(tracker.getAll(), is(new Item[]{item1, item3}));
+        assertThat(tracker.getAll(), is(Arrays.asList(item1, item3)));
         assertThat(tracker.delete("1"), is(false));
     }
     @Test
     public void whenFindByNameThird() {
-        assertThat(tracker.findByName("name3"), is(new Item[]{item3}));
+        assertThat(tracker.findByName("name3"), is(Arrays.asList(item3)));
     }
     @Test
     public void whenFindByIDSecond() {

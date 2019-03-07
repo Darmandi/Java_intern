@@ -2,6 +2,7 @@ package ru.job4j.tracker.trackersingleton;
 
 import ru.job4j.tracker.Item;
 import ru.job4j.tracker.Tracker;
+import java.util.List;
 
 /**
  * @author Dmitrii Saraev
@@ -37,11 +38,11 @@ public class TrackerSingleStaticFinalField {
         return this.tracker.findByID(id);
     }
 
-    public Item[] getAll() {
+    public List<Item> getAll() {
         return this.tracker.getAll();
     }
 
-    public Item[] findByName(String name) {
+    public List<Item> findByName(String name) {
         return this.tracker.findByName(name);
     }
 }

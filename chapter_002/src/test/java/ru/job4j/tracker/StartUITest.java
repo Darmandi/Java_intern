@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -41,7 +42,7 @@ public class StartUITest {
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Input input = new StubInput(new String[]{"0", "name4", "desc4", "y"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.getAll()[3].getName(), is("name4"));
+        assertThat(tracker.getAll().get(3).getName(), is("name4"));
     }
     @Test
     public void whenUpdateThenTrackerHasUpdatedValue() {
@@ -53,7 +54,7 @@ public class StartUITest {
     public void whenDeleteThenTrackerHasNoValue() {
         Input input = new StubInput(new String[]{"3", item2.getID(), "y"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.getAll(), is(new Item[]{item1, item3}));
+        assertThat(tracker.getAll(), is(Arrays.asList(item1, item3)));
     }
     @Test
     public void whenFindByID() {
@@ -65,7 +66,7 @@ public class StartUITest {
     public void whenFindByNameThenFirstAndSecond() {
         Input input = new StubInput(new String[]{"5", "name1", "y"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.findByName("name1"), is(new Item[]{item1, item2}));
+        assertThat(tracker.findByName("name1"), is(Arrays.asList(item1, item2)));
     }
     /**
     @Test
@@ -90,7 +91,7 @@ public class StartUITest {
         assertThat(new String(out.toByteArray()), is(new StringBuilder()
                 .append(menu)
                 .append("------------ Adding new item --------------").append(System.lineSeparator())
-                .append("New Item with Id : ").append(tracker.getAll()[3].getID()).append(System.lineSeparator())
+                .append("New Item with Id : ").append(tracker.getAll().get(3).getID()).append(System.lineSeparator())
                 //.append(menu)
                 .toString()));
     }
