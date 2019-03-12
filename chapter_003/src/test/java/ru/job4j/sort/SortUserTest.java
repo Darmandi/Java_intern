@@ -41,8 +41,8 @@ public class SortUserTest {
         list.add(user2);
         list.add(user6);
         list.add(user1);
-        Set<User> result = sorted.sortNameLength(list);
-        Assert.assertThat(result, is(new TreeSet(Arrays.asList(user1, user2, user3, user6))));
+        List<User> result = sorted.sortNameLength(list);
+        Assert.assertThat(result, is(new ArrayList(Arrays.asList(user2, user1, user3, user6))));
     }
     @Test
     public void allFieldsTest() {
@@ -52,7 +52,7 @@ public class SortUserTest {
         list.add(user5);
         list.add(user4);
         list.add(user1);
-        Set<User> result = sorted.sortByAllFields(list);
-        Assert.assertThat(result, is(new TreeSet(Arrays.asList(user1, user2, user3, user5, user4, user6))));
+        List<User> result = sorted.sortByAllFields(list);
+        Assert.assertThat(result, is(new ArrayList(Arrays.asList(user1, user2, user3, user5, user4, user6))));
     }
 }

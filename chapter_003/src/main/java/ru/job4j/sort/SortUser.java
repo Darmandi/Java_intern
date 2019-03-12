@@ -22,13 +22,13 @@ public class SortUser {
      * @param list список User
      * @return отсортированный список
      */
-    public Set<User> sortNameLength(List<User> list) {
+    public List<User> sortNameLength(List<User> list) {
         Collections.sort(list, new Comparator<User>() {
             public int compare(User o1, User o2) {
                 return Integer.compare(o1.getName().length(), o2.getName().length());
             }
         });
-        return new TreeSet<User>(list);
+        return new ArrayList<>(list);
     }
 
     /**
@@ -37,13 +37,13 @@ public class SortUser {
      * @param list список User
      * @return отсортированный список
      */
-    public Set<User> sortByAllFields(List<User> list) {
+    public List<User> sortByAllFields(List<User> list) {
         Collections.sort(list, new Comparator<User>() {
             public int compare(User o1, User o2) {
                 int result = o1.getName().compareTo(o2.getName());
                 return result != 0 ? result : Integer.compare(o1.getAge(), o2.getAge());
             }
         });
-        return new TreeSet<User>(list);
+        return new ArrayList<>(list);
     }
 }
