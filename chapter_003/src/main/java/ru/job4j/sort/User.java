@@ -14,6 +14,10 @@ public class User implements Comparable<User> {
         this.age = age;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     /**
      * Метод сортирует User по возрасту, если равны, то по имени
      * @param user User
@@ -22,6 +26,6 @@ public class User implements Comparable<User> {
     @Override
     public int compareTo(User user) {
         int result = Integer.compare(this.age, user.age);
-        return result != 0 ? Integer.compare(this.age, user.age) : this.name.compareTo(user.name);
+        return result;
     }
 }
