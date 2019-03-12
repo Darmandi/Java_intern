@@ -18,6 +18,10 @@ public class User implements Comparable<User> {
         return this.name;
     }
 
+    public int getAge() {
+        return this.age;
+    }
+
     /**
      * Метод сортирует User по возрасту, если равны, то по имени
      * @param user User
