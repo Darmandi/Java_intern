@@ -13,10 +13,6 @@ public class TrackerSingleStaticFinalFieldTest {
     Item item3 = tracker.add(new Item("name3", "desc3"));
 
     @Test
-    public void whenAddNewItemThenTrackerHasSameItem() {
-        assertThat(tracker.getAll(), is(Arrays.asList(item1, item2, item3)));
-    }
-    @Test
     public void whenReplaceNameThenReturnNewName() {
         Item next = new Item("test2", "testDescription2");
         next.setID(item1.getID());
@@ -28,10 +24,6 @@ public class TrackerSingleStaticFinalFieldTest {
         tracker.delete(item2.getID());
         assertThat(tracker.getAll(), is(Arrays.asList(item1, item3)));
         assertThat(tracker.delete("1"), is(false));
-    }
-    @Test
-    public void whenFindByNameThird() {
-        assertThat(tracker.findByName("name3"), is(Arrays.asList(item3)));
     }
     @Test
     public void whenFindByIDSecond() {

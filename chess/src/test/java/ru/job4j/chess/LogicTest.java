@@ -157,7 +157,7 @@ public class LogicTest {
     }
 
     @Test(expected = FigureNotFoundException.class)
-    public void C1() {
+    public void moveC1() {
         assertThat(logic.move(Cell.C1, Cell.C4), is(true));
     }
 }

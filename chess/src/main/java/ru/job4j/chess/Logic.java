@@ -25,7 +25,7 @@ public class Logic {
         if (index != -1) {
             Cell[] steps = this.figures[index].way(source, dest);
             if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
-                if (checkMove(source, dest) == false) {
+                if (!checkMove(source, dest)) {
                     throw new OccupiedWayException("Путь перекрыт");
                 } else {
                     this.figures[index] = this.figures[index].copy(dest);
