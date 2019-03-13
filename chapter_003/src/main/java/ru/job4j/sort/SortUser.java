@@ -28,7 +28,7 @@ public class SortUser {
                 return Integer.compare(o1.getName().length(), o2.getName().length());
             }
         });
-        return new ArrayList<>(list);
+        return list;
     }
 
     /**
@@ -44,6 +44,6 @@ public class SortUser {
                 return result != 0 ? result : Integer.compare(o1.getAge(), o2.getAge());
             }
         });
-        return new ArrayList<>(list);
+        return list;
     }
 }
