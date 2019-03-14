@@ -1,11 +1,12 @@
 package ru.job4j.condition;
 
 /**
- * @author Dmitrii Saraev
+ * If else
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
- * @since 2.03.2018
  */
 public class DummyBot {
+
     /**
      * Отвечает на вопросы
      * @param question Вопрос от клиента.

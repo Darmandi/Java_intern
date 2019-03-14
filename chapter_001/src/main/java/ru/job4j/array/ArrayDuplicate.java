@@ -1,10 +1,9 @@
 package ru.job4j.array;
 import java.util.Arrays;
 
-/**
- * @author Dmitrii Saraev
+/** Удаление дубликатов из массива
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
- * @since 12.03.2018
  */
 public class ArrayDuplicate {
     private String line;

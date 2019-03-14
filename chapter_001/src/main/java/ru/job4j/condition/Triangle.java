@@ -1,10 +1,20 @@
 package ru.job4j.condition;
 
+/** Треугольник
+ * @author  Дмитрий Сараев (guitarpro4@mail.ru)
+ * @version 1
+ */
 public class Triangle {
     private Point a;
     private Point b;
     private Point c;
 
+    /**
+     * Треугольник с вершинами в координатах
+     * @param a
+     * @param b
+     * @param c
+     */
     public Triangle(Point a, Point b, Point c) {
         this.a = a;
         this.b = b;
@@ -18,8 +28,6 @@ public class Triangle {
      * @param bc расстояние между b и c.
      * @return полупериметр.
      */
-
-
     public double period(double ab, double ac, double bc) {
         return (ab + ac + bc) / 2;
     }

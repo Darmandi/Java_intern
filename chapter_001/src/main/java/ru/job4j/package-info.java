@@ -1,8 +1,5 @@
 /**
- * Package for calculate task.
- *
- * @author Dmitrii Saraev (guitarpro4@mail.ru)
- * @version 1
- * @since 7.12.2017
+ * Пакет для первой программы.
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  */
 package ru.job4j;

@@ -1,9 +1,8 @@
 package ru.job4j.array;
 
-/**
- * @author Dmitrii Saraev
+/** Слово в слове
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
- * @since 15.04.2018
  */
 public class ArrayCharInArrayChar {
     /**

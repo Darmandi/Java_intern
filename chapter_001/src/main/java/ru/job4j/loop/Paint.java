@@ -1,11 +1,10 @@
 package ru.job4j.loop;
 
 /**
- * @author Dmitrii Saraev
+ * StringBuilder, for и if
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
- * @since 5.03.2018
  */
-
 public class Paint {
 
     /**

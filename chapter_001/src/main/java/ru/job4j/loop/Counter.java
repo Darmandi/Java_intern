@@ -1,12 +1,12 @@
 package ru.job4j.loop;
 
 /**
- * @author Dmitrii Saraev
+ * Цикл с if
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
- * @since 3.03.2018
  */
-
 public class Counter {
+
     /**
      * Вычисляет сумму четных чисел в заданном диапазое
      * @param begin начало диапазона

@@ -1,11 +1,10 @@
 package ru.job4j.loop;
 
 /**
- * @author Dmitrii Saraev
+ * StringBuilder
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
- * @since 5.03.2018
  */
-
 public class Board {
 
     /**
@@ -14,7 +13,6 @@ public class Board {
      * @param height высота доски
      * @return символьная строка шириной width и высотой height.
      */
-
     public String paint(int width, int height) {
         StringBuilder screen = new StringBuilder();
         String ln = System.lineSeparator();

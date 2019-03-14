@@ -1,11 +1,9 @@
 package ru.job4j.array;
 
-/**
- * @author Dmtrii Saraev
+/** Сортировка пузырьком
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
- * @since 7.03.2018
  */
-
 public class BubbleSort {
     /**
      * Сортирует члены массива по возрастанию

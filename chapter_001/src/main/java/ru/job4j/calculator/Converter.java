@@ -1,9 +1,11 @@
 package ru.job4j.calculator;
+
 /**
- * Конвертер валюты.
+ * Конвертер валюты
+ * @author  Дмитрий Сараев (guitarpro4@mail.ru)
+ * @version 1
  */
 public class Converter {
-	
 	private int result;
 	static final int RUBINEU = 70;
     static final int RUBINUSD = 60;
