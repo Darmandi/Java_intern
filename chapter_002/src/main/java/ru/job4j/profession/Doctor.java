@@ -1,9 +1,9 @@
 package ru.job4j.profession;
 
 /**
- * @author Dmitrii Saraev
+ * Класс доктор
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
- * @since 03.06.2018
  */
 public class Doctor extends Profession {
 
@@ -13,6 +13,7 @@ public class Doctor extends Profession {
     public Doctor(String name, String profession) {
         super(name, profession);
     }
+
      /**
      * Лечит кашель у пациента
      * @param patient пациент с жалобой

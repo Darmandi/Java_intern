@@ -1,11 +1,10 @@
 package ru.job4j.profession;
 
 /**
- * @author Dmitrii Saraev
+ * Класс профессия
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
- * @since 19.04.2018
  */
-
 public class Profession {
     public String name;
     public String profession;
@@ -14,7 +13,7 @@ public class Profession {
     }
 
     /**
-     * Класс профессии
+     * Профессия
      * @param name имя
      * @param profession название профессии
      */

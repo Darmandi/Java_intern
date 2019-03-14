@@ -3,11 +3,10 @@ package ru.job4j.coffee;
 import java.util.Arrays;
 
 /**
- * @author Dmitrii Saraev
+ * Задача со сдачей
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
- * @since 11.02.2019
  */
-
 public class Coffee {
     int[] monets = {10, 5, 2, 1};
 

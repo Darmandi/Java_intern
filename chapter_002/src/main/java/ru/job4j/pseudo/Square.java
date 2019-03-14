@@ -1,11 +1,16 @@
 package ru.job4j.pseudo;
 
 /**
- * @author Dmitrii Saraev
+ * Класс квадрата
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
  */
-
 public class Square implements Shape {
+
+    /**
+     * Печатает квадрат
+     * @return
+     */
     public String draw() {
         StringBuilder pic = new StringBuilder();
         pic.append("++++++++");

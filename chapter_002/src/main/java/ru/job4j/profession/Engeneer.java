@@ -1,9 +1,9 @@
 package ru.job4j.profession;
 
 /**
- * @author Dmitrii Saraev
+ * Класс инженер
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
- * @since 03.06.2018
  */
 public class Engeneer extends Profession {
 
@@ -13,6 +13,7 @@ public class Engeneer extends Profession {
     public Engeneer(String name, String profession) {
         super(name, profession);
     }
+
     /**
      * Строит дом
      * @param house размер дома

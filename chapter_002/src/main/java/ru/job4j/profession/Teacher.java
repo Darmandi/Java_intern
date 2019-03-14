@@ -1,8 +1,9 @@
 package ru.job4j.profession;
+
 /**
- * @author Dmitrii Saraev
+ * Класс учитель
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
- * @since 05.06.2018
  */
 public class Teacher extends Profession {
     public Teacher() {
@@ -11,6 +12,7 @@ public class Teacher extends Profession {
     public Teacher(String name, String profession) {
         super(name, profession);
     }
+
     /**
      * Учит студента
      * @param student студент

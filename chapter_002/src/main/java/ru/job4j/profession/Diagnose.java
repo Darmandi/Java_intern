@@ -1,16 +1,15 @@
 package ru.job4j.profession;
 
 /**
- * @author Dmitrii Saraev
+ * Класс диагноза для класаа Doctor
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
- * @since 03.06.2018
  */
-
 public class Diagnose {
     String diagnose;
 
     /**
-     * Класс диагноза для класаа Doctor
+     * Диагноз
      * @param diagnose выставляемый диагноз
      */
     public Diagnose(String diagnose) {
