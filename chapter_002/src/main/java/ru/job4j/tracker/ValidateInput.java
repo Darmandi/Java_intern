@@ -2,19 +2,23 @@ package ru.job4j.tracker;
 
 
 /**
- * @author Dmitrii Saraev
+ * Применение шаблрна декоратор
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
  */
-
 public class ValidateInput implements Input {
     private final Input input;
+
     public ValidateInput(final Input input) {
         this.input = input;
     }
+
     @Override
     public String ask(String question) {
         return this.input.ask(question);
     }
+
+    @Override
     public int ask(String question, int[] range) {
         boolean invalid = true;
         int value = -1;

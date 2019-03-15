@@ -3,11 +3,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * @author Dmotrii Saraev
+ * Класс реализации меню
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
  */
-
-
 public class MenuTracker {
     private Input input;
     private Tracker tracker;

@@ -1,10 +1,10 @@
 package ru.job4j.tracker;
 
 /**
- * @author Dmitrii Saraev
+ * Класс заявки
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
  */
-
 public class Item {
     public String id;
     public String name;
@@ -12,6 +12,14 @@ public class Item {
     public long created;
     public String[] comments;
 
+    /**
+     * Заявка
+     * @param id id заявки
+     * @param name имя заявки
+     * @param desc описание
+     * @param created дата создания
+     * @param comments комментарий
+     */
     public Item(String id, String name, String desc, long created, String[] comments) {
         this.id = id;
         this.name = name;

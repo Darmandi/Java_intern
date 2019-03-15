@@ -2,13 +2,12 @@ package ru.job4j.tracker;
 import java.util.*;
 
 /**
- * @author Dmitrii Saraev
+ * Хпанилище заявок
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
  */
-
 public class Tracker {
     private List<Item> items = new ArrayList<>();
-    //private int position = 0;
     private static final Random RN = new Random();
 
     /**

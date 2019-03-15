@@ -3,10 +3,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * @author Dmitrii Saraev
+ * Класс для ввода пользователя через консоль
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
  */
-
 public class StartUI {
     /**
      * Константы меню

@@ -5,10 +5,10 @@ import ru.job4j.tracker.Tracker;
 import java.util.List;
 
 /**
- * @author Dmitrii Saraev
+ * Singleton при помощи приватного статичного поля
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
  * @version 1
  */
-
 public class TrackerSingleStaticField {
     private static TrackerSingleStaticField instance;
 
