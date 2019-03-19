@@ -110,8 +110,8 @@ public class Bank {
      */
     public boolean transferMoney(int srcPassport, int srcRequisite, int destPassport, int dstRequisite, double amount) {
         boolean result = false;
-        boolean srcAccount = users.get(getUser(srcPassport)).contains(getAccount(getUser(srcPassport), srcRequisite));
-        boolean destAccount = users.get(getUser(destPassport)).contains(getAccount(getUser(destPassport), dstRequisite));
+        boolean srcAccount = !Objects.isNull(getAccount(getUser(srcPassport), srcRequisite));
+        boolean destAccount = !Objects.isNull(getAccount(getUser(destPassport), dstRequisite));
         if (srcAccount && destAccount && getAccount(getUser(srcPassport), srcRequisite).getValue() > amount) {
             getAccount(getUser(srcPassport), srcRequisite).subFromValue(amount);
             getAccount(getUser(destPassport), dstRequisite).addToValue(amount);
