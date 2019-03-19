@@ -1,11 +1,23 @@
 package ru.job4j.search;
 
+/**
+ * Класс контакт для справочника
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
+ * @version 1
+ */
 public class Person {
     private String name;
     private String surname;
     private String phone;
     private String address;
 
+    /**
+     * Контакт
+     * @param name имя
+     * @param surname фамилия
+     * @param phone телефон
+     * @param address адресс
+     */
     public Person(String name, String surname, String phone, String address) {
         this.name = name;
         this.surname = surname;

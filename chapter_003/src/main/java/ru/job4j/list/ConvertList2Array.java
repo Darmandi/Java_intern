@@ -3,7 +3,13 @@ package ru.job4j.list;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Конвертация list в массив
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
+ * @version 1
+ */
 public class ConvertList2Array {
+
     /**
      * Метод должен равномерно разбить лист на количество строк двумерного массива
      * @param list лист

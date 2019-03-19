@@ -1,9 +1,11 @@
 package ru.job4j.sort;
 
 import java.util.Comparator;
+
 /**
- * @author Dmitrii Saraev
- * @version 0.1
+ * Реализация компаратора
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
+ * @version 1
  */
 public class ListCompare implements Comparator<String> {
     /**

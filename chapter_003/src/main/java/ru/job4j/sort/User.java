@@ -1,14 +1,19 @@
 package ru.job4j.sort;
 
 /**
- * @author Dmitrii Saraev
- * @version 0.1
+ * Реализация Comparable
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
+ * @version 1
  */
-
 public class User implements Comparable<User> {
     private String name;
     private int age;
 
+    /**
+     * Пользователь
+     * @param name имя
+     * @param age возраст
+     */
     public User(String name, int age) {
         this.name = name;
         this.age = age;
