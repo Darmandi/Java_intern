@@ -32,7 +32,12 @@ public class Bank {
      * @param account счет пользователю
      */
     public void addAccountToUser(int passport, Account account) {
-        this.users.get(getUser(passport)).add(account);
+        if (!Objects.isNull(getUser(passport))) {
+            users.get(getUser(passport)).add(account);
+        }
+        else {
+            System.out.println("Incorrect passport");
+        }
     }
 
     /**
@@ -106,11 +111,9 @@ public class Bank {
      */
     public boolean transferMoney(int srcPassport, int srcRequisite, int destPassport, int dstRequisite, double amount) {
         boolean result = false;
-        boolean srcUser = !users.get(getUser(srcPassport)).isEmpty();
         boolean srcAccount = users.get(getUser(srcPassport)).contains(getAccount(getUser(srcPassport), srcRequisite));
-        boolean destUser = !users.get(getUser(destPassport)).isEmpty();
         boolean destAccount = users.get(getUser(destPassport)).contains(getAccount(getUser(destPassport), dstRequisite));
-        if (srcUser && srcAccount && destUser && destAccount && getAccount(getUser(srcPassport), srcRequisite).getValue() > amount) {
+        if (srcAccount && destAccount && getAccount(getUser(srcPassport), srcRequisite).getValue() > amount) {
             getAccount(getUser(srcPassport), srcRequisite).subFromValue(amount);
             getAccount(getUser(destPassport), dstRequisite).addToValue(amount);
             result = true;

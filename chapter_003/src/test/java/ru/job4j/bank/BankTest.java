@@ -3,6 +3,9 @@ package ru.job4j.bank;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.assertThat;
@@ -14,6 +17,7 @@ public class BankTest {
     List<Account> accounts = new ArrayList<>();
     User user1 = new User("Mike", 12312454);
     User user2 = new User("Jack", 23444322);
+    private final ByteArrayOutputStream mem = new ByteArrayOutputStream();
 
     @Before
     public void init() {
@@ -27,6 +31,7 @@ public class BankTest {
         bank.addAccountToUser(user1.getPassport(), accounts.get(1));
         bank.addAccountToUser(user2.getPassport(), accounts.get(2));
         bank.addAccountToUser(user2.getPassport(), accounts.get(3));
+        System.setOut(new PrintStream(this.mem));
     }
 
     @Test
@@ -58,6 +63,13 @@ public class BankTest {
         bank.addAccountToUser(user3.getPassport(), account);
         List<Account> result = bank.getUserAccounts(user3.getPassport());
         Assert.assertThat(result.get(0).getRequisites(), is(account.getRequisites()));
+    }
+
+    @Test
+    public void whenAddAccountToInvalidPassport() {
+        Account account = new Account(23, 711);
+        bank.addAccountToUser(123, account);
+        assertThat(this.mem.toString(), is(String.format("Incorrect passport\r\n")));
     }
 
     @Test
