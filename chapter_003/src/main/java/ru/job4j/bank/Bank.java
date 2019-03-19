@@ -34,8 +34,7 @@ public class Bank {
     public void addAccountToUser(int passport, Account account) {
         if (!Objects.isNull(getUser(passport))) {
             users.get(getUser(passport)).add(account);
-        }
-        else {
+        } else {
             System.out.println("Incorrect passport");
         }
     }
