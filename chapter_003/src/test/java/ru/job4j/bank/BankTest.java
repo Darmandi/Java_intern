@@ -75,7 +75,7 @@ public class BankTest {
     public void whenAddAccountToInvalidPassport() {
         Account account = new Account(23, 711);
         bank.addAccountToUser(123, account);
-        assertThat(this.mem.toString(), is(String.format("Incorrect passport\r\n")));
+        assertThat(this.mem.toString(), is(String.format("Incorrect passport%n")));
     }
 
     @Test
