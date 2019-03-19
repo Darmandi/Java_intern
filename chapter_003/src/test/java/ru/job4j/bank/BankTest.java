@@ -1,9 +1,9 @@
 package ru.job4j.bank;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -18,6 +18,7 @@ public class BankTest {
     User user1 = new User("Mike", 12312454);
     User user2 = new User("Jack", 23444322);
     private final ByteArrayOutputStream mem = new ByteArrayOutputStream();
+    private final PrintStream out = System.out;
 
     @Before
     public void init() {
@@ -32,6 +33,11 @@ public class BankTest {
         bank.addAccountToUser(user2.getPassport(), accounts.get(2));
         bank.addAccountToUser(user2.getPassport(), accounts.get(3));
         System.setOut(new PrintStream(this.mem));
+    }
+
+    @After
+    public void loadSys() {
+        System.setOut(this.out);
     }
 
     @Test
