@@ -35,13 +35,19 @@
  <li>Стратегия</li>
  <li>Фабрика</li>
  </ul></ul>
+ 
  <strong>chapter_003</strong><br>
  <ul>Collections. Lite
  <ul>
  <li>Коллекции List, Set, Map</li>
- <li>ArrayList</li>
  <li>Сортировка</li>
  <li>Обобщения</li>
  <li>Итераторы</li>
  </ul></ul>
+ <ul>Инструменты
+  <ul>
+  <li>JaCoCo</li>
+  <li>Travic CI</li>
+ 
+  </ul></ul>
 
