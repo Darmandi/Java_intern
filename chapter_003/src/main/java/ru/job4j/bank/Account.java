@@ -24,19 +24,19 @@ public class Account {
     }
 
     /**
-     * Добавить сумму на счет
-     * @param value сумма
+     * Перевести сумму со счета на другой счет
+     * @param destAcc счет, которому переводят
+     * @param amount сумма
+     * @return успешность перевода
      */
-    public void addToValue(double value) {
-        this.value = this.value + value;
-    }
-
-    /**
-     * Снять сумму со счета
-     * @param value сумма
-     */
-    public void subFromValue(double value) {
-        this.value = this.value - value;
+    public boolean transfer(Account destAcc, double amount) {
+        boolean res = false;
+        if (this.value >= amount) {
+            this.value -= amount;
+            destAcc.value += amount;
+            res = true;
+        }
+        return res;
     }
 
     public int getRequisites() {
