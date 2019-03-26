@@ -19,21 +19,21 @@ public class StartUITest {
         @Override
         public void accept(String s) {
             stdout.println(s);
-            this.printString = this.printString == null ? s : this.printString + "\r\n" + s;
+            this.printString = this.printString == null ? s : this.printString + "\n" + s;
         }
         @Override
         public String toString() {
-            return this.printString + "\r\n";
+            return this.printString + "\n";
         }
     };
 
     String menu = new StringBuilder()
-            .append("0. Add new Item").append(System.lineSeparator())
-            .append("1. Show all items").append(System.lineSeparator())
-            .append("2. Edit item").append(System.lineSeparator())
-            .append("3. Delete item").append(System.lineSeparator())
-            .append("4. Find item by ID").append(System.lineSeparator())
-            .append("5. Find item by name").append(System.lineSeparator())
+            .append("0. Add new Item").append("\n")
+            .append("1. Show all items").append("\n")
+            .append("2. Edit item").append("\n")
+            .append("3. Delete item").append("\n")
+            .append("4. Find item by ID").append("\n")
+            .append("5. Find item by name").append("\n")
             .toString();
 
     Tracker tracker = new Tracker();
@@ -87,8 +87,8 @@ public class StartUITest {
         new StartUI(input, tracker, output).init();
         assertThat(this.output.toString(), is(new StringBuilder()
                 .append(menu)
-                .append("------------ Adding new item --------------").append(System.lineSeparator())
-                .append("New Item with Id : ").append(tracker.getAll().get(3).getID()).append(System.lineSeparator())
+                .append("------------ Adding new item --------------").append("\n")
+                .append("New Item with Id : ").append(tracker.getAll().get(3).getID()).append("\n")
                 .toString()));
     }
     @Test
@@ -97,8 +97,8 @@ public class StartUITest {
         new StartUI(input, tracker, output).init();
         assertThat(this.output.toString(), is(new StringBuilder()
                 .append(menu)
-                .append("------------ Edit item --------------").append(System.lineSeparator())
-                .append("Item edited. Item's ID: ").append(item1.getID()).append(System.lineSeparator())
+                .append("------------ Edit item --------------").append("\n")
+                .append("Item edited. Item's ID: ").append(item1.getID()).append("\n")
                 .toString()));
     }
     @Test
@@ -108,8 +108,8 @@ public class StartUITest {
         new StartUI(input, tracker, output).init();
         assertThat(this.output.toString(), is(new StringBuilder()
                 .append(menu)
-                .append("------------ Delete item --------------").append(System.lineSeparator())
-                .append("Item with ID ").append(id2).append(" was deleted").append(System.lineSeparator())
+                .append("------------ Delete item --------------").append("\n")
+                .append("Item with ID ").append(id2).append(" was deleted").append("\n")
                 .toString()));
     }
 }
