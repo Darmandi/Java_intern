@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 /**
  * Класс реализации меню
@@ -11,11 +12,15 @@ public class MenuTracker {
     private Input input;
     private Tracker tracker;
     private List<UserAction> actions = new ArrayList<>();
+    //Функцирнальный интерфейс
+    private final Consumer<String> output;
 
-    public MenuTracker(Input input, Tracker tracker) {
+    public MenuTracker(Input input, Tracker tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
+        this.output = output;
     }
+
     public int getActionsLength() {
         return this.actions.size();
     }
@@ -38,7 +43,7 @@ public class MenuTracker {
     public void show() {
         for (UserAction action : this.actions) {
             if (action != null) {
-                System.out.println(action.info());
+                output.accept(action.info());
             }
         }
     }
@@ -49,12 +54,12 @@ public class MenuTracker {
         }
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("------------ Adding new item --------------");
+            output.accept("------------ Adding new item --------------");
             String name = input.ask("Please, provide item name:");
             String desc = input.ask("Please, provide item description:");
             Item item = new Item(name, desc);
             tracker.add(item);
-            System.out.println("New Item with Id : " + item.getID());
+            output.accept("New Item with Id : " + item.getID());
         }
     }
 
@@ -68,47 +73,47 @@ public class MenuTracker {
             List<Item> items = tracker.getAll();
             if (items.size() > 0) {
                 for (Item item : items) {
-                    System.out.println(item.toString());
+                    output.accept(item.toString());
                 }
             } else {
-                System.out.println("No items found");
+                output.accept("No items found");
             }
         }
     }
 
-    public static class EditItem extends BaseAction {
+    public class EditItem extends BaseAction {
         public EditItem(int key, String name) {
             super(key, name);
         }
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("------------ Edit item --------------");
+            output.accept("------------ Edit item --------------");
             String id = input.ask("Enter old item's ID:");
             String name = input.ask("Enter new item's ID:");
             String desc = input.ask("Enter description:");
             Item item = new Item(name, desc);
             boolean result = tracker.replace(id, item);
             if (result) {
-                System.out.println("Item edited. Item's ID: " + item.getID());
+                output.accept("Item edited. Item's ID: " + item.getID());
             } else {
-                System.out.println("No items found");
+                output.accept("No items found");
             }
         }
     }
 
-    public static class DeleteItem extends BaseAction {
+    public class DeleteItem extends BaseAction {
         public DeleteItem(int key, String name) {
             super(key, name);
         }
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("------------ Delete item --------------");
+            output.accept("------------ Delete item --------------");
             String id = input.ask("Enter item's ID:");
             boolean result = tracker.delete(id);
             if (result) {
-                System.out.println("Item with ID " + id + " was deleted");
+                output.accept("Item with ID " + id + " was deleted");
             } else {
-                System.out.println("No items found");
+                output.accept("No items found");
             }
         }
     }
