@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 /**
  * Класс для ввода пользователя через консоль
@@ -27,22 +28,25 @@ public class StartUI {
      * Хранилище заявок.
      */
     private final Tracker tracker;
-
+    //Функцирнальный интерфейс
+    private final Consumer<String> output;
     /**
      * Конструтор инициализирующий поля.
      * @param input ввод данных.
      * @param tracker хранилище заявок.
+     * @param output функция вывода данных.
      */
-    public StartUI(Input input, Tracker tracker) {
+    public StartUI(Input input, Tracker tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
+        this.output = output;
     }
 
     /**
      * Основой цикл программы.
      */
     public void init() {
-        MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        MenuTracker menu = new MenuTracker(this.input, this.tracker, output);
         int[] range = new int[10];
         menu.fillActions();
         for (int i = 0; i < menu.getActionsLength(); i++) {
@@ -80,26 +84,26 @@ public class StartUI {
      * Метод реализует добавленяи новый заявки в хранилище.
      */
     private void createItem() {
-        System.out.println("------------ Добавление новой заявки --------------");
+        output.accept("------------ Добавление новой заявки --------------");
         String name = this.input.ask("Введите имя заявки:");
         String desc = this.input.ask("Введите описание заявки:");
         Item item = new Item(name, desc);
         this.tracker.add(item);
-        System.out.println("Новая заявка с ID: " + item.getID());
+        output.accept("Новая заявка с ID: " + item.getID());
     }
 
     /**
      * Метод реализует отображение всех заявок в хранилище.
      */
     private void showItems() {
-        System.out.println("------------ Все заявки --------------");
+        output.accept("------------ Все заявки --------------");
         List<Item> items = this.tracker.getAll();
         if (items.size() > 0) {
             for (Item item : items) {
-                System.out.println(item.toString());
+                output.accept(item.toString());
             }
         } else {
-            System.out.println("Заявки не найдена");
+            output.accept("Заявки не найдена");
         }
     }
 
@@ -107,16 +111,16 @@ public class StartUI {
      * Метод реализует изменение заявки.
      */
     private void editItem() {
-        System.out.println("------------ Изменение заявки --------------");
+        output.accept("------------ Изменение заявки --------------");
         String id = this.input.ask("Введите ID старой заявки:");
         String name = this.input.ask("Введите имя новой заявки:");
         String desc = this.input.ask("Введите описание новой заявки:");
         Item item = new Item(name, desc);
         boolean result = this.tracker.replace(id, item);
         if (result) {
-            System.out.println("Заявка отредактирована. ID заявки: " + item.getID());
+            output.accept("Заявка отредактирована. ID заявки: " + item.getID());
         } else {
-            System.out.println("Заявка не найдена");
+            output.accept("Заявка не найдена");
         }
     }
 
@@ -130,9 +134,9 @@ public class StartUI {
         String id = this.input.ask("Введите ID заявки:");
         boolean result = this.tracker.delete(id);
         if (result) {
-            System.out.println("Заявка с ID " + id + " удалена");
+            output.accept("Заявка с ID " + id + " удалена");
         } else {
-            System.out.println("Заявка не найдена");
+            output.accept("Заявка не найдена");
         }
     }
 
@@ -140,13 +144,13 @@ public class StartUI {
      * Метод реализует поиск заявки по ID.
      */
     private void findItemID() {
-        System.out.println("------------ Поиск заявки по ID--------------");
+        output.accept("------------ Поиск заявки по ID--------------");
         String id = this.input.ask("Введите ID заявки:");
         Item itemTemp = this.tracker.findByID(id);
         if (itemTemp != null) {
-            System.out.println(itemTemp.toString());
+            output.accept(itemTemp.toString());
         } else {
-            System.out.println("Заявка не найдена");
+            output.accept("Заявка не найдена");
         }
     }
 
@@ -154,21 +158,21 @@ public class StartUI {
      * Метод реализует поиск заявки по имени.
      */
     private void findItemName() {
-        System.out.println("------------ Поиск заявки по имени--------------");
+        output.accept("------------ Поиск заявки по имени--------------");
         String name = this.input.ask("Введите имя заявки:");
         List<Item> items = this.tracker.findByName(name);
         if (items.size() > 0) {
             for (Item item : items) {
-                System.out.println(item.toString());
+                output.accept(item.toString());
             }
         } else {
-            System.out.println("Заявки не найдена");
+            output.accept("Заявки не найдена");
         }
     }
 
     private void showMenu() {
-        System.out.println(System.lineSeparator() + "Меню.");
-        System.out.println("0. Add new Item" + System.lineSeparator()
+        output.accept(System.lineSeparator() + "Меню.");
+        output.accept("0. Add new Item" + System.lineSeparator()
                 + "1. Show all items" + System.lineSeparator()
                 + "2. Edit item" + System.lineSeparator()
                 + "3. Delete item" + System.lineSeparator()
@@ -179,8 +183,9 @@ public class StartUI {
 
     /**
      * Запускт программы
+     * вывод на консоль с помощью ссылки на метод System.out::println
      */
     public static void main(String[] args) {
-        new StartUI(new ValidateInput(new ConsoleInput()), new Tracker()).init();
+        new StartUI(new ValidateInput(new ConsoleInput()), new Tracker(), System.out::println).init();
     }
 }
