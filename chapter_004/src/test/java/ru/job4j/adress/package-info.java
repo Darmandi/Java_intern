@@ -1,5 +1,5 @@
 /**
- * Пакет для тестов Stream API, map, collect(Collectors.toList())
+ * Пакет для тестов Stream API, map, collect(Collectors.toList()), distinct() и sorted()
  * @author Дмитрий Сараев (guitarpro4@mail.ru)
  */
 package ru.job4j.adress;

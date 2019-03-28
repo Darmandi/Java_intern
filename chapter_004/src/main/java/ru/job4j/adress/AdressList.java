@@ -18,4 +18,13 @@ public class AdressList {
     public List<Profile.Address> collect(List<Profile> profiles) {
         return profiles.stream().map(i -> i.getAddress()).collect(Collectors.toList());
     }
+
+    /**
+     * Создает список адрессов всех клиентов, сортирует их по городам и удаляет дубликаты
+     * @param profiles список клиентов
+     * @return список адрессов
+     */
+    public List<Profile.Address> sortByCity(List<Profile> profiles) {
+        return profiles.stream().map(i -> i.getAddress()).sorted().distinct().collect(Collectors.toList());
+    }
 }
