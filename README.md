@@ -48,6 +48,12 @@
   <ul>
   <li>JaCoCo</li>
   <li>Travic CI</li>
- 
   </ul></ul>
+  
+  <strong>chapter_004</strong><br>
+   <ul>Функциональное программировани
+   <ul>
+   <li>Lambda</li>
+   <li>Stream API</li>
+   </ul></ul>
 
