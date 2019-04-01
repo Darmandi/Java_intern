@@ -46,13 +46,7 @@ public class Bank {
      */
     public void deleteAccountFromUser(int passport, Account account) {
         User user = getUser(passport);
-            List<Account> accounts = users.get(user);
-            for (Account acc : accounts) {
-                if (acc.getRequisites() == (account.getRequisites())) {
-                    accounts.remove(acc);
-                    break;
-                }
-            }
+        users.get(user).removeIf(acc -> acc.getRequisites() == (account.getRequisites()));
     }
 
     /**
@@ -61,15 +55,7 @@ public class Bank {
      * @return пользователь
      */
     private User getUser(int passport) {
-        User result = null;
-        Set<User> userList = users.keySet();
-        for (User user: userList) {
-            if (passport == user.getPassport()) {
-                result = user;
-                break;
-            }
-        }
-        return result;
+        return users.keySet().stream().filter(user -> user.getPassport() == passport).findFirst().orElse(null);
     }
 
     /**
@@ -79,15 +65,7 @@ public class Bank {
      * @return счет
      */
     private Account getAccount(User user, int requisites) {
-        Account result = null;
-        List<Account> accList = users.get(user);
-        for (Account acc: accList) {
-            if (requisites == acc.getRequisites()) {
-                result = acc;
-                break;
-            }
-        }
-        return result;
+        return users.get(user).stream().filter(acc -> acc.getRequisites() == requisites).findFirst().orElse(null);
     }
 
     /**
