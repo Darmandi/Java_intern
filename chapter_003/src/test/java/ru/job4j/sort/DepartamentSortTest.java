@@ -32,7 +32,7 @@ public class DepartamentSortTest {
     @Test
     public void ascSort() {
         Set<Departament> result = departament.sortAsc(list);
-        Assert.assertThat(result, Is.is(new TreeSet(Arrays.asList(
+        Assert.assertThat(result, Is.is(Set.of(
                 new Departament("K1"),
                 new Departament("K1", "SK1"),
                 new Departament("K1", "SK1", "SSK1"),
@@ -41,14 +41,14 @@ public class DepartamentSortTest {
                 new Departament("K2"),
                 new Departament("K2", "SK1"),
                 new Departament("K2", "SK1", "SSK1"),
-                new Departament("K2", "SK1", "SSK2")))));
+                new Departament("K2", "SK1", "SSK2"))));
     }
 
     @Test
     public void descSort() {
         List<Departament> result = departament.sortDesc(list);
         Set<Departament> re = new TreeSet<>(result);
-        Assert.assertThat(re, Is.is(new TreeSet(Arrays.asList(
+        Assert.assertThat(re, Is.is(Set.of(
                 new Departament("K2"),
                 new Departament("K2", "SK1"),
                 new Departament("K2", "SK1", "SSK2"),
@@ -57,6 +57,6 @@ public class DepartamentSortTest {
                 new Departament("K1", "SK2"),
                 new Departament("K1", "SK1"),
                 new Departament("K1", "SK1", "SSK2"),
-                new Departament("K1", "SK1", "SSK1")))));
+                new Departament("K1", "SK1", "SSK1"))));
     }
 }

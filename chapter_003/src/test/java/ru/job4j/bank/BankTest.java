@@ -14,7 +14,7 @@ import static org.hamcrest.core.IsNull.nullValue;
 
 public class BankTest {
     Bank bank = new Bank();
-    List<Account> accounts = new ArrayList<>();
+    List<Account> accounts;
     User user1 = new User("Mike", 12312454);
     User user2 = new User("Jack", 23444322);
     private final ByteArrayOutputStream mem = new ByteArrayOutputStream();
@@ -22,10 +22,11 @@ public class BankTest {
 
     @Before
     public void init() {
-        accounts.add(new Account(500, 511));
-        accounts.add(new Account(330, 611));
-        accounts.add(new Account(200, 522));
-        accounts.add(new Account(150, 622));
+        accounts = List.of(
+                new Account(500, 511),
+                new Account(330, 611),
+                new Account(200, 522),
+                new Account(150, 622));
         bank.addUser(user1);
         bank.addUser(user2);
         bank.addAccountToUser(user1.getPassport(), accounts.get(0));

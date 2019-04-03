@@ -11,12 +11,13 @@ import static org.junit.Assert.assertThat;
 
 public class UserConvertTest {
     UserConvert hashmap = new UserConvert();
-    List<User> list = new ArrayList<>();
+    List<User> list;
     @Before
     public void fillList() {
-        list.add(new User(1, "Andrey", "Moscow"));
-        list.add(new User(2, "Boris", "Tula"));
-        list.add(new User(3, "Oleg", "Vladimir"));
+        list = List.of(
+        new User(1, "Andrey", "Moscow"),
+        new User(2, "Boris", "Tula"),
+        new User(3, "Oleg", "Vladimir"));
     }
     @Test
     public void whenFind3rd() {
