@@ -17,24 +17,24 @@ public class PhoneDictionaryTest {
     }
     @Test
     public void whenFindByName() {
-        List<Person> persons = phones.find("Ivan");
+        var persons = phones.find("Ivan");
         assertThat(persons.iterator().next().getSurname(), is("Ivanov"));
     }
     @Test
     public void whenFindBySurname() {
-        List<Person> persons = phones.find("Dmitriev");
+        var persons = phones.find("Dmitriev");
         assertThat(persons.iterator().next().getAddress(), is("Saratov"));
     }
     @Test
     public void whenFindByPhone() {
-        List<Person> persons = phones.find("34");
+        var persons = phones.find("34");
         assertThat(persons.get(0).getName(), is("Ivan"));
         assertThat(persons.get(1).getName(), is("Dmitriy"));
         assertThat(persons.get(2).getName(), is("Vladimir"));
     }
     @Test
     public void whenFindByCity() {
-        List<Person> persons = phones.find("Moscow");
+        var persons = phones.find("Moscow");
         assertThat(persons.iterator().next().getName(), is("Ivan"));
     }
 }

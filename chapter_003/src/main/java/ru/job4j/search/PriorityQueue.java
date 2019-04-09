@@ -17,8 +17,8 @@ public class PriorityQueue {
      * @param task элемент
      */
     public void put(Task task) {
-        int index = list.size();
-        for (int i = 0; i < list.size(); i++) {
+        var index = list.size();
+        for (var i = 0; i < list.size(); i++) {
             if (list.get(i).getPriority() > task.getPriority()) {
                 index = i;
                 break;
