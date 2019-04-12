@@ -9,5 +9,5 @@
     <a href="https://darmandi.github.io/Java_intern/003.html">Collections Framework</a>
 </div>
 <div id="4">
-    <a href="https://darmandi.github.io/Java_intern/003.html">FP, Labmda, Stream API</a>
+    <a href="https://darmandi.github.io/Java_intern/004.html">FP, Labmda, Stream API</a>
 </div>
