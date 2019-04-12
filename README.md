@@ -55,5 +55,9 @@
    <ul>
    <li>Lambda</li>
    <li>Stream API</li>
+   <li>Local-Variable</li>
    </ul></ul>
-
+    <ul>Инструменты
+      <ul>
+      <li>Java 11</li>
+      </ul></ul>
