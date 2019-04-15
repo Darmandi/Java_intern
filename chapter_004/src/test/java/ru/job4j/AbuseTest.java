@@ -32,4 +32,16 @@ public class AbuseTest {
                 is(Arrays.asList("Hello", "Bye"))
         );
     }
+
+    @Test
+    public void whenTwoStringsWithFake() {
+        Abuse abuse = new Abuse();
+        assertThat(
+                abuse.clean(
+                        Arrays.asList("Hello Fake Boy", "Bye Bye Fake"),
+                        Arrays.asList("Fake")
+                ),
+                is(Arrays.asList("Hello", "Boy", "Bye", "Bye"))
+        );
+    }
 }
