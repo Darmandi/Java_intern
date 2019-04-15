@@ -10,8 +10,8 @@ import java.util.NoSuchElementException;
  */
 public class JaggedArrayIterator implements Iterator {
     private final int[][] value;
-    private int index3 = 0;
-    private int index4 = 0;
+    private int row = 0;
+    private int cell = 0;
 
     /**
      * Класс с массивом
@@ -28,8 +28,7 @@ public class JaggedArrayIterator implements Iterator {
     @Override
     public boolean hasNext() {
         boolean res = true;
-        int index1 = index3;
-        if (value.length == index1) {
+        if (value.length == row) {
             res = false;
         }
         return res;
@@ -42,13 +41,13 @@ public class JaggedArrayIterator implements Iterator {
     @Override
     public Object next() {
         int res;
-        if (value[index3].length == index4 + 1) {
-            res = value[index3][index4];
-            index4 = 0;
-            index3++;
+        if (value[row].length == cell + 1) {
+            res = value[row][cell];
+            cell = 0;
+            row++;
         } else {
-            res = value[index3][index4];
-            index4++;
+            res = value[row][cell];
+            cell++;
         }
         return res;
     }
