@@ -37,7 +37,7 @@ public class SimpleArray<T> implements Iterable<T> {
     }
 
     /**
-     * Заменяет указанным элементом элемент, находящийся по индексу;
+     * Заменяет указанным элементом элемент, находящийся по индексу
      * @param index индекс
      * @param elem указанный элемент
      */
@@ -82,5 +82,13 @@ public class SimpleArray<T> implements Iterable<T> {
                 return (T) array[index++];
             }
         };
+    }
+
+    /**
+     * Возвращает количество элементов в массиве
+     * @return
+     */
+    public int getCount() {
+        return count;
     }
 }
