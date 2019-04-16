@@ -1,5 +1,5 @@
 package ru.job4j;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,23 +9,17 @@ import java.util.stream.Collectors;
 public class Abuse {
     /**
      * Метод исключает стоп-слова из текста
-     * @param words
-     * @param filthy
-     * @return
+     * @param words текст
+     * @param filthy список стоп-слов
+     * @return исправленный текст
      */
     public List<String> clean(List<String> words, List<String> filthy) {
-        List<String> words2 = new ArrayList<>();
-        for (String w : words) {
-            if (w.contains(" ")) {
-                words2.add(w.substring(0, w.indexOf(" ")));
-
-            } else {
-                words2.add(w);
-            }
-        }
-        List<String> ls3 = words2.stream().filter(o ->
-            filthy.stream().allMatch(p -> !o.contains(p)))
+        List<String> words2 = words.stream()
+                .map(w -> w.split(" "))
+                .flatMap(Arrays::stream)
+                .filter(w -> !w.contains(" "))
+                .filter(o -> filthy.stream().allMatch(p -> !o.contains(p)))
                 .collect(Collectors.toList());
-        return ls3;
+        return words2;
     }
 }
