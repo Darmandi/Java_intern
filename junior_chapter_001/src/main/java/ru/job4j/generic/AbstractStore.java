@@ -35,7 +35,7 @@ public class AbstractStore<T extends Base> implements Store<T> {
     public boolean replace(String id, T model) {
         int index = findIndexById(id);
         boolean result = false;
-        if (findById(id) != null) {
+        if (index != -1) {
             arr.set(index, model);
             result = true;
         }
