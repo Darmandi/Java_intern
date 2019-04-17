@@ -5,6 +5,11 @@ import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * Класс для динамического списка на базе массива
+ * @author Дмитрий Сараев (guitarpro4@mail.ru)
+ * @version 1
+ */
 public class DynamicList<E> implements Iterable<E> {
     private static final int DEFSIZE = 10;
     private Object[] container;
@@ -28,6 +33,9 @@ public class DynamicList<E> implements Iterable<E> {
         }
     }
 
+    /**
+     * Метод получения размера коллекции.
+     */
     public int getSize() {
         return this.container.length;
     }
