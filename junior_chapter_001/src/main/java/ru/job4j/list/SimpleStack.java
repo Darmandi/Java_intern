@@ -23,4 +23,8 @@ public class SimpleStack<T> {
     public void push(T value) {
         container.add(value);
     }
+
+    public int size() {
+        return container.getSize();
+    }
 }

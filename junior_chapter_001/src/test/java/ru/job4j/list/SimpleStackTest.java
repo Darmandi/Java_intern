@@ -17,7 +17,7 @@ public class SimpleStackTest {
     }
 
     @Test
-    public void whenPopThenPopped() {
+    public void checkSequence() {
         Assert.assertThat(stack.poll(), is(3));
         Assert.assertThat(stack.poll(), is(2));
         Assert.assertThat(stack.poll(), is(1));
