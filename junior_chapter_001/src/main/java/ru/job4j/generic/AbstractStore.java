@@ -51,7 +51,7 @@ public class AbstractStore<T extends Base> implements Store<T> {
     public boolean delete(String id) {
         int index = findIndexById(id);
         boolean result = false;
-        if (findById(id) != null) {
+        if (index != -1) {
             arr.remove(index);
             result = true;
         }
