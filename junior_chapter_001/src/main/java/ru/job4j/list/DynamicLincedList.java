@@ -47,6 +47,21 @@ public class DynamicLincedList<E> implements Iterable<E> {
     }
 
     /**
+     * Метод удаляет данные из начала списка
+     * @return удаленные данные
+     */
+    public E delete() {
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+        E elem = first.date;
+        first = first.next;
+        size--;
+        modCount++;
+        return elem;
+    }
+
+    /**
      * Класс предназначен для хранения данных.
      */
     private static class Node<E> {
