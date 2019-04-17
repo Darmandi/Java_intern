@@ -16,12 +16,12 @@ public class IteratorOfIterators {
      * @return новый итератор
      */
     Iterator<Integer> convert(Iterator<Iterator<Integer>> it) {
-        return new Iterator<Integer>() {
+        return new Iterator<>() {
             Iterator<Integer> inner = it.next();
 
             @Override
             public boolean hasNext() {
-                if (it.hasNext() && !inner.hasNext()) {
+                while (it.hasNext() && !inner.hasNext()) {
                         inner = it.next();
                 }
                 return inner.hasNext();
