@@ -17,7 +17,7 @@ public class DynamicList<E> implements Iterable<E> {
     private int modCount;
 
     public DynamicList() {
-        container = new Object[DEFSIZE];
+        this(DEFSIZE);
     }
 
     public DynamicList(int size) {
