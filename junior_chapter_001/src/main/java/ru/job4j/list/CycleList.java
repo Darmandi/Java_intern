@@ -18,12 +18,12 @@ public class CycleList {
      */
     public boolean hasCycle(Node first) {
         boolean result = false;
-        String list = "";
-        Node elem = first;
-        while (elem.next != null) {
-            list += elem.toString();
-            elem = elem.next;
-            if (list.contains(elem.toString())) {
+        Node slow = first;
+        Node fast = first;
+        while (slow != null && fast != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
                 result = true;
                 break;
             }
